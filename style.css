@@ -2,6 +2,8 @@ body{
     margin: 0;
     padding: 0;
 }
+
+/* სათაურის ნაწილი */
 .header{
     width: 100%;
     padding: 38px 162px 38px 162px;
@@ -15,3 +17,13 @@ body{
 }
 
 
+/* საძიებოს ნაწილი */
+
+.search-bar{
+    width: 1596px;
+    height: 47px;
+    top: 177px;
+    left: 162px;
+    display: flex;
+    justify-content: space-between;
+}
