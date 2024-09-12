@@ -1,29 +1,124 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
 
-/* სათაურის ნაწილი */
-.header{
+.header {
     width: 100%;
-    padding: 38px 162px 38px 162px;
+    padding: 38px 162px;
     gap: 10px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
     border: 1px solid #DBDBDB;
 }
-.header h1{
+
+.header h1 {
     color: red;
 }
 
+.main {
+    display: flex;
+    justify-content: center; 
+    margin-top: 177px;
+}
 
-/* საძიებოს ნაწილი */
-
-.search-bar{
+.search-bar {
     width: 1596px;
     height: 47px;
-    top: 177px;
-    left: 162px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    border: 1px solid red;
+}
+
+.left-side,
+.right-side {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-evenly;
+}
+
+.right-side {
+    justify-content: flex-end;
+}
+
+.left-side p,
+.right-side p {
+    margin: 0 10px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown button {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown button .arrow {
+    margin-left: 5px;
+    transition: transform 0.3s ease; 
+}
+.dropdown.active .arrow {
+    transform: rotate(180deg); 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #DBDBDB;
+    padding: 24px;
+    width: 731px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(2, 21, 38, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.dropdown-content label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+}
+
+
+input[type="checkbox"] {
+    display: none; 
+}
+
+input[type="checkbox"] + span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + span {
+    background-color: #4CAF50; 
+    border-color: #4CAF50;
+}
+
+input[type="checkbox"]:checked + span::before {
+    content: '✔'; 
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 5px;
+}
+
+
+.dropdown.active .dropdown-content {
+    display: flex;
 }
