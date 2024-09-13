@@ -10,16 +10,12 @@
 <body>
     <!-- 9cfdb883-2067-404a-97f7-6b99880edc78 -->
 
-
-
     <!-- სათაურის ნაწილი -->
     <header class="header" id="header">
         <h1>REDBERRY</h1>
     </header>
 
-    
     <!-- მთავარი ნაწილი -->
-
 
     <main class="main" id="main">
         <div class="search-bar">
@@ -31,12 +27,46 @@
                 </div>
 
 
-            <div class="price-dropdown">
+            <!-- <div class="price-dropdown">
                 <button id="priceCategory">საფასო კატეგორია<span class="arrow">▼</span></button>
                 <div class="priceDropdown" id="priceDropdown"></div>
+            </div> -->
+
+            <div class="price-dropdown">
+                <button id="priceCategory">საფასო კატეგორია <span class="arrow">▼</span></button>
+        
+                <!-- Price Range Dropdown (Initially hidden) -->
+                <div class="price-range-selector" id="priceDropdown">
+                    <h3>ფასის მიხედვით</h3>
+                    <div class="price-inputs">
+                        <div class="price-input">
+                            <input type="number" id="minPrice" placeholder="დან" min="0">
+                        </div>
+                        <div class="price-input">
+                            <input type="number" id="maxPrice" placeholder="დან" min="0">
+                        </div>
+                    </div>
+                    <div class="price-options">
+                        <div class="price-column">
+                            <h4>მინ. ფასი</h4>
+                            <div class="price-option">50,000 ₾</div>
+                            <div class="price-option">100,000 ₾</div>
+                            <div class="price-option">150,000 ₾</div>
+                            <div class="price-option">200,000 ₾</div>
+                            <div class="price-option">300,000 ₾</div>
+                        </div>
+                        <div class="price-column">
+                            <h4>მაქს. ფასი</h4>
+                            <div class="price-option">50,000 ₾</div>
+                            <div class="price-option">100,000 ₾</div>
+                            <div class="price-option">150,000 ₾</div>
+                            <div class="price-option">200,000 ₾</div>
+                            <div class="price-option">300,000 ₾</div>
+                        </div>
+                    </div>
+                    <button class="submit-btn">არჩევა</button>
+                </div>
             </div>
-
-
 
 
 
@@ -51,8 +81,6 @@
         </div>
     </main>
     
-
-
 
 </body>
 </html>

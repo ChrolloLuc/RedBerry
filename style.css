@@ -27,7 +27,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* border: 1px solid red; */
 }
 .left-side{
     border: 1px solid grey;
@@ -71,6 +70,11 @@ body {
     margin-left: 5px;
     transition: transform 0.3s ease; 
 }
+.dropdown.active .price-range-selector {
+    display: block;
+}
+
+
 .dropdown.active .arrow {
     transform: rotate(180deg); 
 }
@@ -158,9 +162,11 @@ input[type="checkbox"]:checked + span::before {
     background-color: hsl(14, 100%, 37%);
 }
 
+
+
 /* საფასო კატეგორია */
 
-.price-dropdown button {
+/* .price-dropdown button {
     background-color: transparent;
     border: 1px solid transparent;
     padding: 10px;
@@ -243,6 +249,103 @@ input[type="checkbox"]:checked + span::before {
     margin-top: 16px;
     cursor: pointer;
     text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #E64A19;
+} */
+
+#priceCategory {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+#priceCategory .arrow {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Hidden by default, will be displayed on click */
+.price-range-selector {
+    width: 382px;
+    height: 372px;
+    border-radius: 10px;
+    
+    padding: 24px;
+    
+    display: none; 
+    position: absolute;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the dropdown appear and rotate the arrow */
+.price-dropdown.active .price-range-selector {
+    display: block;
+}
+
+.price-dropdown.active #priceCategory .arrow {
+    transform: rotate(180deg);
+}
+
+.price-range-selector h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.price-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 325px;
+    height: 42px;
+    top: 20px;
+    left: 21px;
+    gap: 15px;
+}
+
+.price-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+}
+
+.price-options {
+    display: flex;
+    gap: 16px;
+}
+
+.price-column {
+    flex: 1;
+}
+
+.price-option {
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .submit-btn:hover {
