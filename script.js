@@ -53,6 +53,8 @@ regionDropdown();
 const regionButton = document.getElementById('regionButton');
 const dropdownContent = document.querySelector('.dropdown-content');
 
+
+
 // pricedropdown
 document.addEventListener('DOMContentLoaded', function() {
     const priceCategoryButton = document.getElementById('priceCategory');
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.querySelector('.submit-btn').addEventListener('click', function() {
+    document.querySelector('.price-btn').addEventListener('click', function() {
         const minPrice = minInput.value;
         const maxPrice = maxInput.value;
         console.log(`Selected price range: ${minPrice} - ${maxPrice} ₾`);
