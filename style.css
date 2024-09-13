@@ -14,10 +14,15 @@ body {
     color: red;
 }
 
+
+
+
 .main {
     display: flex;
     justify-content: center; 
-    margin-top: 177px;
+    top: 177px;
+    left: 162px;
+    position: fixed;
 }
 
 .search-bar {
@@ -26,14 +31,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+}
+.left-side{
+    border: 1px solid grey;
+    border-radius: 15px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .left-side,
 .right-side {
     display: flex;
     flex-grow: 1;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .right-side {
@@ -50,8 +63,8 @@ body {
 }
 
 .dropdown button {
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: transparent;
+    border: 1px solid transparent;
     padding: 10px;
     cursor: pointer;
     display: flex;
@@ -72,8 +85,8 @@ body {
     background-color: white;
     border: 1px solid #DBDBDB;
     padding: 24px;
-    width: 731px;
-    height: auto;
+    width: 731px; 
+    height: 284px;
     border-radius: 10px;
     box-shadow: 0 5px 12px rgba(2, 21, 38, 0.08);
     display: flex;
@@ -85,8 +98,9 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 150px;
+    width: calc(100% / 3 - 32px); /* 3 სვეტი */
 }
+
 
 
 input[type="checkbox"] {
@@ -117,8 +131,35 @@ input[type="checkbox"]:checked + span::before {
     top: 0;
     left: 5px;
 }
-
-
 .dropdown.active .dropdown-content {
     display: flex;
+    
 }
+
+.dropdown-content .button-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the button to the right */
+    width: 100%; /* Takes full width of the dropdown content */
+    margin-top: 20px; /* Creates some space above the button */
+
+}
+
+.dropdown-content .submit-btn {
+    width: 150px;
+    height: 40px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.dropdown-content .submit-btn:hover{
+    background-color: hsl(14, 100%, 47%);
+}
+.dropdown-content .submit-btn:active{
+    background-color: hsl(14, 100%, 37%);
+}
+
+/* საფასო კატეგორია */

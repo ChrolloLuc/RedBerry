@@ -1,4 +1,4 @@
-const apiData = [
+const apiDataRegion = [
     { "id": 1, "name": "აფხაზეთი" },
     { "id": 2, "name": "აჭარა" },
     { "id": 3, "name": "გურია" },
@@ -13,10 +13,46 @@ const apiData = [
     { "id": 12, "name": "შიდა ქართლი" }
 ];
 
+let apiDataCity = [];
+
+function populateCityDropdown(regionId) {
+
+    const cityDropdown = document.getElementById('cityDropdown');
+    cityDropdown.innerHTML = ''; 
+
+    const filteredCities = apiDataCity.filter(city => city.region_id === regionId);
+
+    if (filteredCities.length === 0) {
+
+        cityDropdown.innerHTML = '<p>No cities available</p>';
+
+    } else {
+
+        filteredCities.forEach(city => {
+
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = city.name;
+
+            const customCheckbox = document.createElement('span');
+
+
+            label.appendChild(checkbox);
+            label.appendChild(customCheckbox);
+            label.appendChild(document.createTextNode(city.name));
+
+            cityDropdown.appendChild(label);
+        });
+    }
+}
+
+
+
 function populateDropdown() {
     const dropdownContainer = document.getElementById('regionDropdown');
 
-    apiData.forEach(region => {
+    apiDataRegion.forEach(region => {
         const label = document.createElement('label');
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -32,8 +68,22 @@ function populateDropdown() {
 
         dropdownContainer.appendChild(label);
     });
-}
+    // buttonis divi
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container')
 
+    // tviton buttoni
+    const submitButton = document.createElement('button');
+    submitButton.classList.add('submit-btn');
+    submitButton.textContent = 'არჩევა';
+    // gavgzavnot
+    
+    buttonContainer.appendChild(submitButton);
+    dropdownContainer.appendChild(buttonContainer);
+    
+
+
+}
 
 populateDropdown();
 
