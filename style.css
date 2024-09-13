@@ -160,6 +160,91 @@ input[type="checkbox"]:checked + span::before {
 
 /* საფასო კატეგორია */
 
+.price-dropdown button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+
 .price-dropdown{
     position: relative;
+}
+
+.priceDropdown{
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #DBDBDB;
+    padding: 24px;
+    width: 382px; 
+    height: 372px;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(2, 21, 38, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    
+}
+
+.price-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.price-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+}
+
+.price-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.price-column {
+    width: 45%;
+}
+
+.price-column h4 {
+    margin-bottom: 10px;
+}
+
+.price-option {
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: #F2F2F2;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.price-option:hover {
+    background-color: #E6E6E6;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #E64A19;
 }
