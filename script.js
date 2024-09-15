@@ -1,57 +1,76 @@
-const apiDataRegion = [
-    { "id": 1, "name": "აფხაზეთი" },
-    { "id": 2, "name": "აჭარა" },
-    { "id": 3, "name": "გურია" },
-    { "id": 4, "name": "თბილისი" },
-    { "id": 5, "name": "იმერეთი" },
-    { "id": 6, "name": "კახეთი" },
-    { "id": 7, "name": "მცხეთა-მთიანეთი" },
-    { "id": 8, "name": "რაჭა-ლეჩხუმი" },
-    { "id": 9, "name": "სამეგრელო" },
-    { "id": 10, "name": "სამცხე-ჯავახეთი" },
-    { "id": 11, "name": "ქვემო ქართლი" },
-    { "id": 12, "name": "შიდა ქართლი" }
-];
+// fetch api
+async function fetchRegions() {
+    try {
+        const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/regions');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Could not fetch regions:", error);
+        return []; 
+    }
+}
+// fetch api
 
-function regionDropdown() {
+// create region dropdown
+async function regionDropdown() {
     const dropdownContainer = document.getElementById('regionDropdown');
+    const regions = await fetchRegions();
 
-    apiDataRegion.forEach(region => {
+    regions.forEach(region => {
         const label = document.createElement('label');
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.value = region.name;
 
-        
         const customCheckbox = document.createElement('span');
 
-        
         label.appendChild(checkbox);
         label.appendChild(customCheckbox);
         label.appendChild(document.createTextNode(region.name));
 
         dropdownContainer.appendChild(label);
     });
-    // buttonis divi
-    const buttonContainer = document.createElement('div');
-    buttonContainer.classList.add('button-container')
 
-    // tviton buttoni
+    // Button container
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+
+    // Submit button
     const submitButton = document.createElement('button');
     submitButton.classList.add('submit-btn');
     submitButton.textContent = 'არჩევა';
-    // gavgzavnot
-    
+
     buttonContainer.appendChild(submitButton);
     dropdownContainer.appendChild(buttonContainer);
-
 }
 
 regionDropdown();
 
+// Toggle dropdown visibility and arrow rotation
 const regionButton = document.getElementById('regionButton');
 const dropdownContent = document.querySelector('.dropdown-content');
+const dropdown = document.querySelector('.region-dropdown');
+
+dropdownContent.style.visibility = 'hidden';
+dropdownContent.style.opacity = 0;
+
+regionButton.addEventListener('click', function() {
+    const isVisible = dropdownContent.style.visibility === 'visible';
+
+    if (isVisible) {
+        dropdownContent.style.visibility = 'hidden';
+        dropdownContent.style.opacity = 0;
+        dropdown.classList.remove('active');
+    } else {
+        dropdownContent.style.visibility = 'visible';
+        dropdownContent.style.opacity = 1;
+        dropdown.classList.add('active');
+    }
+});
+// region dropdown
 
 
 
@@ -92,22 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-dropdownContent.style.visibility = 'hidden';
-dropdownContent.style.opacity = 0;
 
-regionButton.addEventListener('click', function() {
-    const isVisible = dropdownContent.style.visibility === 'visible';
-    
-    if (isVisible) {
-        
-        dropdownContent.style.visibility = 'hidden';
-        dropdownContent.style.opacity = 0;
-    } else {
-        
-        dropdownContent.style.visibility = 'visible';
-        dropdownContent.style.opacity = 1;
-    }
-});
 
 // bedroom dropdown
 const bedroomButton = document.getElementById('bedroom-button');
@@ -118,6 +122,8 @@ bedroomButton.addEventListener('click', () => {
 });
 // bedroom dropdwon
 
+
+
 //area dropdown
 
 const areaButton = document.getElementById('area-button')
@@ -127,5 +133,42 @@ areaButton.addEventListener('click', () =>{
     areaButton.classList.toggle('active')
 })
 
-
 //area dropdown
+
+
+
+//add agent
+
+const agentButton = document.getElementById('agent-button');
+const modal = document.getElementById('agent-modal');
+const body = document.body;
+const cancelButton = document.querySelector('.cancel-btn');
+
+// Function to hide the modal
+function closeModal() {
+  modal.classList.add('hidden');
+  body.classList.remove('modal-open');
+  modal.classList.remove('modal-active');
+}
+
+// Show the modal when the agent button is clicked
+agentButton.addEventListener('click', () => {
+  modal.classList.remove('hidden');
+  body.classList.add('modal-open');
+  modal.classList.add('modal-active');
+});
+
+// Hide the modal when clicking outside of the modal content
+modal.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+// Hide the modal when the "გაუქმება" button is clicked
+cancelButton.addEventListener('click', () => {
+  closeModal();
+});
+
+
+//add agent
