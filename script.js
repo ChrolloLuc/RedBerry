@@ -109,4 +109,23 @@ regionButton.addEventListener('click', function() {
     }
 });
 
+// bedroom dropdown
+const bedroomButton = document.getElementById('bedroom-button');
+const bedroomDropdown = document.getElementById('bedroom-dropdown');
 
+bedroomButton.addEventListener('click', () => {
+    bedroomButton.classList.toggle('active');
+});
+// bedroom dropdwon
+
+//area dropdown
+
+const areaButton = document.getElementById('area-button')
+const areaDropdown = document.getElementById('area-dropdown')
+
+areaButton.addEventListener('click', () =>{
+    areaButton.classList.toggle('active')
+})
+
+
+//area dropdown

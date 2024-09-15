@@ -1,94 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RedBerry</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  </head>
+  <body>
     <!-- 9cfdb883-2067-404a-97f7-6b99880edc78 -->
-
     <!-- სათაურის ნაწილი -->
     <header class="header" id="header">
-        <h1>REDBERRY</h1>
+      <h1>REDBERRY</h1>
     </header>
-
     <!-- მთავარი ნაწილი -->
-
     <main class="main" id="main">
-        <div class="search-bar">
-            <div class="left-side">
-
-
-
-                <div class="dropdown">
-                    <button id="regionButton">რეგიონი<span class="arrow">▼</span></button>
-                    <div class="dropdown-content" id="regionDropdown"></div>
+      <div class="search-bar">
+        <div class="left-side">
+          <div class="dropdown">
+            <button id="regionButton">რეგიონი <span class="arrow">▼</span>
+            </button>
+            <div class="dropdown-content" id="regionDropdown"></div>
+          </div>
+          <div class="price-dropdown">
+            <button id="priceCategory">საფასო კატეგორია <span class="arrow">▼</span>
+            </button>
+            <!-- Price Range Dropdown (Initially hidden) -->
+            <div class="price-range-selector" id="priceDropdown">
+              <h3>ფასის მიხედვით</h3>
+              <div class="price-inputs">
+                <div class="price-input">
+                  <input type="number" id="minPrice" placeholder="დან" min="0">
                 </div>
-
-
-
-            <div class="price-dropdown">
-                <button id="priceCategory">საფასო კატეგორია <span class="arrow">▼</span></button>
-        
-                <!-- Price Range Dropdown (Initially hidden) -->
-                <div class="price-range-selector" id="priceDropdown">
-                    <h3>ფასის მიხედვით</h3>
-                    <div class="price-inputs">
-                        <div class="price-input">
-                            <input type="number" id="minPrice" placeholder="დან" min="0">
-                        </div>
-                        <div class="price-input">
-                            <input type="number" id="maxPrice" placeholder="დან" min="0">
-                        </div>
-                    </div>
-                    <div class="price-options">
-                        <div class="price-column">
-                            <h4>მინ. ფასი</h4>
-                            <div class="price-option">50,000 ₾</div>
-                            <div class="price-option">100,000 ₾</div>
-                            <div class="price-option">150,000 ₾</div>
-                            <div class="price-option">200,000 ₾</div>
-                            <div class="price-option">300,000 ₾</div>
-                        </div>
-                        <div class="price-column">
-                            <h4>მაქს. ფასი</h4>
-                            <div class="price-option">50,000 ₾</div>
-                            <div class="price-option">100,000 ₾</div>
-                            <div class="price-option">150,000 ₾</div>
-                            <div class="price-option">200,000 ₾</div>
-                            <div class="price-option">300,000 ₾</div>
-                        </div>
-                    </div>
-                    <button class="price-btn">არჩევა</button>
+                <div class="price-input">
+                  <input type="number" id="maxPrice" placeholder="დან" min="0">
                 </div>
+              </div>
+              <div class="price-options">
+                <div class="price-column">
+                  <h4>მინ. ფასი</h4>
+                  <div class="price-option">50,000 ₾</div>
+                  <div class="price-option">100,000 ₾</div>
+                  <div class="price-option">150,000 ₾</div>
+                  <div class="price-option">200,000 ₾</div>
+                  <div class="price-option">300,000 ₾</div>
+                </div>
+                <div class="price-column">
+                  <h4>მაქს. ფასი</h4>
+                  <div class="price-option">50,000 ₾</div>
+                  <div class="price-option">100,000 ₾</div>
+                  <div class="price-option">150,000 ₾</div>
+                  <div class="price-option">200,000 ₾</div>
+                  <div class="price-option">300,000 ₾</div>
+                </div>
+              </div>
+              <button class="price-btn">არჩევა</button>
             </div>
-
-
-
- 
-                <p>ფართობი</p>
+          </div>
 
 
 
 
-
-                <button id="bedroom-button">საძინებლის რაოდენობა<span class="arrow">▼</span></button>
-                <div class="bedroom-dropdown" id="bedroom-dropdown"></div>
-            </div>
-
-
-
-
-            <div class="right-side">
-                <button id="listing-button" class="listing-button">+ ლისტინგის დამატება</button>
-                <button id="agent-button" class="agent-button">+ აგენტის დამატება</button>
+          <div class="area-dropdown" id="area-dropdown">
+            <button class="area-button" id="area-button">ფართობი <span class="arrow">▼</span></button>
+            <div class="area-selector">
+                <h3>ფართობის მითითებით</h3>
+                <div class="area-inputs">
+                    <div class="input-group">
+                        <label for="min-price">დან</label>
+                        <input type="text" id="min-price" placeholder="მ²">
+                    </div>
+                    <div class="input-group">
+                        <label for="max-price">დმდე</label>
+                        <input type="text" id="max-price" placeholder="მ²">
+                    </div>
+                </div>
+                <div class="area-options">
+                    <div class="area-column">
+                        <h4>მინ. ₾</h4>
+                        <div class="area-option">50,000 ₾</div>
+                        <div class="area-option">100,000 ₾</div>
+                        <div class="area-option">150,000 ₾</div>
+                        <div class="area-option">200,000 ₾</div>
+                        <div class="area-option">300,000 ₾</div>
+                    </div>
+                    <div class="area-column">
+                        <h4>მაქს. ₾</h4>
+                        <div class="area-option">50,000 ₾</div>
+                        <div class="area-option">100,000 ₾</div>
+                        <div class="area-option">150,000 ₾</div>
+                        <div class="area-option">200,000 ₾</div>
+                        <div class="area-option">300,000 ₾</div>
+                    </div>
+                </div>
+                <button class="area-choose" id="area-choose">არჩევა</button>
             </div>
         </div>
-    </main>
-    
+        
 
-</body>
+
+
+
+
+          <div class="bedroom-container">
+            <button class="bedroom-button" id="bedroom-button"> საძინებლის რაოდენობა <span class="arrow">▼</span>
+            </button>
+            <div class="bedroom-dropdown" id="bedroom-dropdown">
+              <div class="bedroom-dropdown-content">
+                <label for="bedroom-count">საძინებლის რაოდენობა</label>
+                <input type="number" id="bedroom-count" min="1" value="2">
+                <button class="bedroom-choose">არჩევა</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right-side">
+          <button id="listing-button" class="listing-button">+ ლისტინგის დამატება</button>
+          <button id="agent-button" class="agent-button">+ აგენტის დამატება</button>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
