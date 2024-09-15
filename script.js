@@ -142,32 +142,34 @@ areaButton.addEventListener('click', () =>{
 const agentButton = document.getElementById('agent-button');
 const modal = document.getElementById('agent-modal');
 const body = document.body;
-const cancelButton = document.querySelector('.cancel-btn');
+const cancelButton = document.querySelector('.agent-form-btn-cancel');
 
 // Function to hide the modal
 function closeModal() {
-  modal.classList.add('hidden');
-  body.classList.remove('modal-open');
-  modal.classList.remove('modal-active');
+    modal.classList.add('hidden');
+    body.classList.remove('modal-open');
+    modal.classList.remove('modal-active');
 }
 
 // Show the modal when the agent button is clicked
 agentButton.addEventListener('click', () => {
-  modal.classList.remove('hidden');
-  body.classList.add('modal-open');
-  modal.classList.add('modal-active');
+    modal.classList.remove('hidden');
+    body.classList.add('modal-open');
+    setTimeout(() => {
+        modal.classList.add('modal-active');
+    }, 10);
 });
 
 // Hide the modal when clicking outside of the modal content
 modal.addEventListener('click', (event) => {
-  if (event.target === modal) {
-    closeModal();
-  }
+    if (event.target === modal) {
+        closeModal();
+    }
 });
 
 // Hide the modal when the "გაუქმება" button is clicked
 cancelButton.addEventListener('click', () => {
-  closeModal();
+    closeModal();
 });
 
 

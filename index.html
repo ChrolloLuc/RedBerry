@@ -117,53 +117,58 @@
         <div class="right-side">
           <button id="listing-button" class="listing-button">+ ლისტინგის დამატება</button>
 
+<!-- daamate agenti -->
+<button id="agent-button" class="agent-button">+ აგენტის დამატება</button>
 
-          <button id="agent-button" class="agent-button">+ აგენტის დამატება</button>
-
-<!-- Modal -->
-<div id="agent-modal" class="modal hidden">
-  <div class="modal-content">
-    <h2>აგენტის დამატება</h2>
-    <form>
-      <div class="form-group">
-        <div class="left-column">
-          <label for="name">სახელი *</label>
-          <input type="text" id="name" placeholder="მაგ: დავით"/>
-          
-          <label for="email">მეილი *</label>
-          <input type="email" id="email" placeholder="მაგ: gamowydgen@redberry.ge"/>
-          
-          <label for="file-upload">ავტორიზაცია ფოსტით *</label>
-          <div class="file-upload">
-            <textarea id="file-upload" placeholder=""></textarea>
-            <button class="add-file-btn" type="button">+</button>
-          </div>
-        </div>
-        
-        <div class="right-column">
-          <label for="surname">გვარი *</label>
-          <input type="text" id="surname" placeholder="მაგ: ყიფიანი"/>
-          
-          <label for="phone">ტელეფონის ნომერი</label>
-          <input type="tel" id="phone" placeholder="მობილური ნომერი"/>
-        </div>
-      </div>
-      
-      <div class="button-group">
-        <button type="button" class="cancel-btn">გაუქმება</button>
-        <button type="submit" class="add-agent-btn">დამატე აგენტი</button>
-      </div>
-    </form>
-  </div>
+<div id="agent-modal" class="agent-modal hidden">
+    <div class="agent-form-container">
+        <h1 class="agent-form-title">აგენტის დამატება</h1>
+        <form class="agent-form">
+            <div class="agent-form-column">
+                <div class="agent-form-group">
+                    <label for="agent-name" class="agent-form-label">სახელი*</label>
+                    <input type="text" id="agent-name" class="agent-form-input" required>
+                    <p class="agent-form-hint">მინიმუმ ორი სიმბოლო</p>
+                </div>
+                <div class="agent-form-group">
+                    <label for="agent-email" class="agent-form-label">ელ-ფოსტა*</label>
+                    <input type="email" id="agent-email" class="agent-form-input" required>
+                    <p class="agent-form-hint">გამოიყენეთ @redberry.ge ფოსტა</p>
+                </div>
+            </div>
+            <div class="agent-form-column">
+                <div class="agent-form-group">
+                    <label for="agent-surname" class="agent-form-label">გვარი*</label>
+                    <input type="text" id="agent-surname" class="agent-form-input" required>
+                    <p class="agent-form-hint">მინიმუმ ორი სიმბოლო</p>
+                </div>
+                <div class="agent-form-group">
+                    <label for="agent-phone" class="agent-form-label">ტელეფონის ნომერი</label>
+                    <input type="tel" id="agent-phone" class="agent-form-input">
+                    <p class="agent-form-hint">მხოლოდ რიცხვები</p>
+                </div>
+            </div>
+            <div class="agent-form-group agent-form-group-full">
+                <label for="agent-photo" class="agent-form-label">ატვირთეთ ფოტო*</label>
+                <div class="agent-form-file-upload" id="agent-photo">
+                    <span>+</span>
+                </div>
+            </div>
+            <div class="agent-form-button-group">
+                <button type="button" class="agent-form-btn agent-form-btn-cancel">გაუქმება</button>
+                <button type="submit" class="agent-form-btn agent-form-btn-submit">დაამატე აგენტი</button>
+            </div>
+        </form>
+    </div>
 </div>
-
+<!-- daamate agenti -->
 
 
         </div>
       </div>
     </main>
 
-<div class="cards-component"></div>
+<!-- <div class="cards-component"></div> -->
 
 
   </body>
