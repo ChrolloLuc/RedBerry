@@ -167,8 +167,6 @@ input[type="checkbox"]:checked + span::before {
 
 /* საფასო კატეგორია */
 
-
-
 #priceCategory {
     padding: 10px 20px;
     background-color: transparent;
@@ -195,7 +193,7 @@ input[type="checkbox"]:checked + span::before {
     position: absolute;
     z-index: 999;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   
+    background-color: white;
 }
 
 

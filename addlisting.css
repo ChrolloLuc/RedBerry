@@ -108,11 +108,17 @@ input[type="text"], input[type="number"], select, textarea {
     border-radius: 10px;
     font-weight: bold;
 }
-
+.btn-cancel:hover{
+    background-color: #f93b1d;
+    color: white;
+}
 .btn-submit {
     background-color: #f93b1d;
     color: white;
     border: none;
     border-radius: 10px;
     font-weight: bold;
+}
+.btn-submit:hover{
+    background-color: hsl(8, 95%, 45%);
 }
