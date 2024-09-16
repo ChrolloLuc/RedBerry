@@ -13,5 +13,80 @@ body {
 }
 
 .header h1 {
-    color: red;
+    color: #F93B1D;
 }
+
+.listing-header {
+    text-align: center;
+}
+
+.content-wrapper {
+    width: 790px;
+    margin: 20px auto;
+}
+
+.add-listing-container {
+    height: 1211px;
+    padding: 20px; 
+    border: 1px solid red;
+    position: relative; 
+    box-sizing: border-box; 
+}
+
+.agent-form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.agent-form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.agent-form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.agent-form-group input {
+    width: 100%;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    height: 47px;
+}
+
+.agent-form-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.agent-form-btn-cancel {
+    background-color: white;
+    color: #f93b1d;
+    border: 1px solid #f93b1d;
+    margin-right: 10px;
+}
+
+.agent-form-btn-submit {
+    background-color: #f93b1d;
+    color: white;
+    border: none;
+}
+
+/* .deal-container{
+    width: 266px;
+    height: 45px;
+    
+
+} */
