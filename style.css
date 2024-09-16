@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 16px;
 }
 
@@ -16,11 +16,11 @@ body {
     color: red;
 }
 .main {
+    padding-top: 20px;
     display: flex;
     justify-content: center; 
     top: 177px;
     left: 162px;
-    /* position: fixed; */
 }
 
 .search-bar {
@@ -29,6 +29,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 .left-side{
     border: 1px solid grey;
@@ -66,6 +67,7 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
+    font-size: 16px;
 }
 
 .region-dropdown button .arrow {
@@ -175,6 +177,7 @@ input[type="checkbox"]:checked + span::before {
     border-radius: 4px;
     display: flex;
     align-items: center;
+    font-size: 16px;
 }
 
 #priceCategory .arrow {
@@ -465,10 +468,16 @@ input[type="text"] {
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
+    
 }
 .listing-button:hover{
     background-color: #DF3014;
 }
+.listing-button a{
+    text-decoration: none;
+    color: white;
+}
+
 
 .agent-button{
     background-color: transparent;
