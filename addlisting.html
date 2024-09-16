@@ -9,82 +9,96 @@
     <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header" id="header">
+    <header class="header">
         <h1>REDBERRY</h1>
-      </header>
+    </header>
 
-      
+    <div class="content-wrapper">
+        <div class="form-container">
+            <h1>ლისტინგის დამატება</h1>
+            <form>
+                <div class="form-group">
+                    <label>გარიგების ტიპი</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="deal-type" value="sale"> იყიდება</label>
+                        <label><input type="radio" name="deal-type" value="rent"> ქირავდება</label>
+                    </div>
+                </div>
 
-      <h1 class="listing-header">ლისტინგის დამატება</h1>
-      <div class="content-wrapper">
-    <div class="add-listing-container">
-        
-    <div class="deal-container">
-      <label>გარიგების ტიპი</label>
-      <input type="radio">იყიდება
-      <input type="radio">ქირავდება
-    </div>
+                <h2>მდებარეობა</h2>
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="address">მისამართი *</label>
+                            <input type="text" id="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">რეგიონი</label>
+                            <select id="region">
+                                <option value="">აირჩიეთ რეგიონი</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="postal-code">საფოსტო ინდექსი *</label>
+                            <input type="text" id="postal-code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">ქალაქი</label>
+                            <select id="city">
+                                <option value="">აირჩიეთ ქალაქი</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-      <h3>მდებარეობა</h3>
+                <h2>ბინის დეტალები</h2>
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="price">ფასი</label>
+                            <input type="number" id="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="bedrooms">საძინებლების რაოდენობა *</label>
+                            <input type="number" id="bedrooms" required>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="area">ფართობი</label>
+                            <input type="number" id="area">
+                        </div>
+                    </div>
+                </div>
 
-      <h4>მისამართი *</h4>
-      <input>
-      <p>მინიმუმ ორი სიმბოლო</p>
+                <div class="form-group">
+                    <label for="description">აღწერა *</label>
+                    <textarea id="description" rows="4" required></textarea>
+                </div>
 
+                    
+                <div class="form-group">
+                    <label>ატვირთეთ ფოტო *</label>
+                    <div class="photo-upload">
+                        <span>+</span>
+                    </div>
+                </div>
 
-      <h4>საფოსტო ინდექსი *</h4>
-      <input>
-      <p>მხოლოდ რიცხვები</p>
-
-      <h4>რეგიონი</h4>
-      <input>
-      
-
-      <h4>ქალაქი</h4>
-      <input>
-
-    <label>ბინის დეტალები</label>
-
-    <h4>ფასი</h4>
-    <input >
-    <p>მხოლოდ რიცხვები</p>
-
-    <h4>ფართობი</h4>
-    <input>
-    <p>მხოლოდ რიცხვები</p>
-
-    <h4>საძინებლების რაოდენობა *</h4>
-    <input>
-    <p>მხოლოდ რიცხვები</p>
-
-    <h4>აღწერა *</h4>
-    <textarea></textarea>
-    <p>მინიმუმ ხუთი სიტყვა</p>
-
-    <div class="agent-form-group agent-form-group-full">
-        <label for="agent-photo" class="agent-form-label">ატვირთეთ ფოტო*</label>
-        <div class="agent-form-file-upload" id="agent-photo">
-            <span>+</span>
+                <div class="form-group">
+                    <label for="agent">აგენტი</label>
+                    <select id="agent">
+                        <option value="">აირჩიეთ აგენტი</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn btn-cancel">გაუქმება</button>
+            <button type="submit" class="btn btn-submit">დაამატე ლისტინგი</button>
         </div>
     </div>
-
-    <label>აგენტი</label>
-    <h4>აირჩიე</h4>
-    <input>
-
-
-    
-
-
-
-</div>
-    
-<div class="buttons">
-    <button type="button" class="agent-form-btn agent-form-btn-cancel">გაუქმება</button>
-    <button type="submit" class="agent-form-btn agent-form-btn-submit">დაამატე აგენტი</button>
-</div>
-
-</div>
     
 
 

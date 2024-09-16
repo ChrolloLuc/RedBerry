@@ -8,85 +8,111 @@ body {
 .header {
     width: 100%;
     padding: 38px 162px;
-    gap: 10px;
-    border: 1px solid #DBDBDB;
+    border-bottom: 1px solid #DBDBDB;
+    background-color: white;
 }
 
 .header h1 {
     color: #F93B1D;
-}
-
-.listing-header {
-    text-align: center;
+    margin: 0;
 }
 
 .content-wrapper {
     width: 790px;
-    margin: 20px auto;
+    margin: 40px auto;
 }
 
-.add-listing-container {
-    height: 1211px;
-    padding: 20px; 
-    border: 1px solid red;
-    position: relative; 
-    box-sizing: border-box; 
+.form-container {
+    background-color: white;
+    border-radius: 8px;
 }
 
-.agent-form-group {
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #333;
+    margin-top: 40px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
-    width: 100%;
 }
 
-.agent-form-label {
+.form-column {
+    width: 48%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.agent-form-input {
+input[type="text"], input[type="number"], select, textarea {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-.agent-form-group input {
-    width: 100%;
+.radio-group {
+    display: flex;
+    gap: 20px;
 }
 
-/* Buttons */
+.photo-upload {
+    width: 100%;
+    height: 100px;
+    border: 2px dashed #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+}
+
+.photo-upload span {
+    font-size: 24px;
+    color: #888;
+}
+
 .buttons {
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
     margin-top: 20px;
-    height: 47px;
 }
 
-.agent-form-btn {
+.btn {
     padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 15px;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.agent-form-btn-cancel {
+.btn-cancel {
     background-color: white;
     color: #f93b1d;
     border: 1px solid #f93b1d;
-    margin-right: 10px;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
-.agent-form-btn-submit {
+.btn-submit {
     background-color: #f93b1d;
     color: white;
     border: none;
+    border-radius: 10px;
+    font-weight: bold;
 }
-
-/* .deal-container{
-    width: 266px;
-    height: 45px;
-    
-
-} */
