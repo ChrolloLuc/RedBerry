@@ -8,9 +8,7 @@
     <script src="listingpage.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -49,6 +47,27 @@
                         <p class="mail">sophio.gelovani@redberry.ge</p>
                         <p class="phone-number">577 77 77 77</p>
                     </div>
+                    
+                    <div class="delete-listing">
+                        <button class="dlt-button" id="dlt-button">ლისტინგის წაშლა</button>
+                    </div>
+
+
+                    
+                    <div class="delete-overlay" id="delete-overlay">
+                        <div class="delete-container" id="delete-container">
+                            <img src="delete-circled-outline.png" alt="x" class="x-button" id="close-btn">
+                            <h3 class="listing-header">გსურთ წაშალოთ ლისტინგი?</h3>
+                            <div class="button-container">
+                                <button class="cancel-btn" id="cancel-btn">გაუქმება</button>
+                                <button class="approve-btn">დადასტურება</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
             </aside>
         </main>
@@ -175,7 +194,5 @@
             <button class="nav-button next" aria-label="Next">&#8594;</button>
         </div>
     </section>
-
-
 </body>
 </html>

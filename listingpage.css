@@ -59,18 +59,19 @@ body {
     position: absolute;
     top: 20px;
     left: 20px;
-    background-color: transparent;
-    border: 1px solid #666;
+    background-color: rgba(2, 21, 38, 0.5);
+    border: none; 
     color: white;
-    padding: 6px;
     border-radius: 20px;
-    width: 142px;
-    height: 41px;
+    width: 142px; 
+    height: 41px; 
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    
 }
+
 
 .right-side {
     width: 503px;
@@ -82,6 +83,97 @@ body {
     width: 338px;
     height: 246px;
 }
+
+.delete-listing{
+    margin-top: 20px;
+   
+}
+.dlt-button{
+    background-color: transparent;
+    border: 1px solid #676e76;
+    /* width: 131px;
+    height: 34px; */
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.delete-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(5px);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+}
+
+
+.delete-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    z-index: 1000; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.cancel-btn {
+    color: #F93B1D;
+    border: 1px solid #F93B1D;
+    border-radius: 10px;
+    padding: 10px 16px;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    color: white;
+    background-color: #F93B1D;
+}
+
+.approve-btn {
+    background-color: #F93B1D;
+    border-radius: 10px;
+    padding: 10px 16px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.approve-btn:hover {
+    background-color: hsl(8, 95%, 45%);
+}
+
+.x-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 
 .price {
     font-size: 32px;

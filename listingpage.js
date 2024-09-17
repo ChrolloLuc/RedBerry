@@ -53,3 +53,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auto-scroll
     setInterval(moveNext, 5000);
 });
+
+
+
+
+const deleteListing = document.getElementById('dlt-button');
+const deleteOverlay = document.getElementById('delete-overlay');
+const closeBtn = document.getElementById('close-btn');
+const cancelBtn = document.getElementById('cancel-btn');
+
+function showModal() {
+    deleteOverlay.style.display = 'flex';  
+}
+
+
+function closeModal() {
+    deleteOverlay.style.display = 'none';  
+}
+
+
+deleteListing.addEventListener('click', showModal);
+
+closeBtn.addEventListener('click', closeModal);
+cancelBtn.addEventListener('click', closeModal);
+
+deleteOverlay.addEventListener('click', (e) => {
+    if (e.target === deleteOverlay) {
+        closeModal();
+    }
+});
+
