@@ -1,19 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.listings-track');
-    const cards = Array.from(track.querySelectorAll('.property-card'));
-    const cardWidth = cards[0].offsetWidth + 20; // Include margin
+    let cards = Array.from(track.querySelectorAll('.property-card'));
+    const cardWidth = cards[0].offsetWidth + 20; 
     const prevButton = document.querySelector('.nav-button.prev');
     const nextButton = document.querySelector('.nav-button.next');
-    
-    // Clone items for infinite effect
-    cards.forEach(card => {
-        const clone = card.cloneNode(true);
-        track.appendChild(clone);
-    });
 
     let currentIndex = 0;
-    const totalCards = cards.length;
-    const visibleCards = 4; // Number of cards visible at once
+    const visibleCards = 4;
+
+    
+    function appendNextSet() {
+        const clones = cards.slice(0, visibleCards).map(card => card.cloneNode(true));
+        clones.forEach(clone => track.appendChild(clone));
+        cards = Array.from(track.querySelectorAll('.property-card')); 
+    }
+
+    
+    function prependPrevSet() {
+        const clones = cards.slice(-visibleCards).map(card => card.cloneNode(true));
+        clones.forEach(clone => track.insertBefore(clone, cards[0]));
+        cards = Array.from(track.querySelectorAll('.property-card')); 
+        currentIndex += visibleCards; 
+        track.style.transition = 'none'; 
+        track.style.transform = `translateX(${-currentIndex * cardWidth}px)`; 
+        setTimeout(() => track.style.transition = 'transform 0.3s ease', 0); 
+    }
 
     function updateCarousel() {
         track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
@@ -21,36 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function moveNext() {
         currentIndex++;
-        if (currentIndex >= totalCards) {
-            // If we've moved beyond the original set, jump back to start instantly
-            setTimeout(() => {
-                track.style.transition = 'none';
-                currentIndex = 0;
-                updateCarousel();
-                setTimeout(() => {
-                    track.style.transition = 'transform 0.3s ease';
-                }, 10);
-            }, 300);
-        } else {
-            updateCarousel();
+        updateCarousel();
+
+        if (currentIndex >= cards.length - visibleCards) {
+            appendNextSet(); 
         }
     }
 
     function movePrev() {
-        if (currentIndex <= 0) {
-            // If we're at the start, jump to the end instantly
-            track.style.transition = 'none';
-            currentIndex = totalCards;
-            updateCarousel();
-            setTimeout(() => {
-                track.style.transition = 'transform 0.3s ease';
-                currentIndex--;
-                updateCarousel();
-            }, 10);
-        } else {
-            currentIndex--;
-            updateCarousel();
+        if (currentIndex === 0) {
+            prependPrevSet(); 
         }
+        currentIndex--;
+        updateCarousel();
     }
 
     nextButton.addEventListener('click', moveNext);
