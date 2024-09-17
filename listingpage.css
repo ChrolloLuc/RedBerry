@@ -1,0 +1,256 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+.header {
+    width: 100%;
+    padding: 38px 162px;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.header h1 {
+    color: #F93B1D;
+    margin: 0;
+}
+
+.container {
+    max-width: 1591px;
+    margin: 0 auto;
+    padding: 0 162px;
+    position: relative;
+}
+
+.back-link {
+    position: absolute;
+    left: 162px;
+    top: 32px;
+}
+
+.arrow {
+    width: 32px;
+    height: 32px;
+    top: 96px;
+    left: 14px;
+    position: absolute;
+}
+
+.main {
+    display: flex;
+    gap: 68px;
+    margin-top: 64px;
+}
+
+.picture {
+    position: relative;
+    width: 839px;
+}
+
+.house-image {
+    width: 100%;
+    height: 670px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.sale-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: 1px solid #666;
+    color: white;
+    padding: 6px;
+    border-radius: 20px;
+    width: 142px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.right-side {
+    width: 503px;
+    height: 714px;
+}
+
+.numbers {
+    margin-bottom: 40px;
+    width: 338px;
+    height: 246px;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.location, .area, .bedroom, .index {
+    margin-bottom: 8px;
+}
+
+.bellow-info {
+    margin-top: 50px;
+    width: 503px;
+    height: 356px;
+}
+
+.description {
+    margin-bottom: 40px;
+}
+
+.agent-container {
+    border: 1px solid #DBDBDB;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.agent-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.human {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.agent-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-name {
+    font-weight: bold;
+    margin: 0 0 4px 0;
+}
+
+.agent-title {
+    margin: 0;
+    color: #666;
+}
+
+.mail, .phone-number {
+    margin: 8px 0;
+}
+
+.date {
+    text-align: center;
+    margin-top: 40px;
+    color: #666;
+}
+.property-listings {
+    max-width: 1591px;
+    margin: 60px auto;
+    padding: 0 162px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.listings-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.listings-carousel {
+    width: 100%;
+    overflow: hidden;
+}
+
+.listings-track {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.property-card {
+    flex: 0 0 calc(25% - 15px); /* 4 items per view, with some gap */
+    margin-right: 20px;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.property-image {
+    position: relative;
+    height: 200px;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #F93B1D;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.property-details {
+    padding: 15px;
+}
+
+.property-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.property-location {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.property-features {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.property-features span {
+    display: flex;
+    align-items: center;
+}
+
+.property-features i {
+    margin-right: 5px;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.prev {
+    left: -40px;
+}
+
+.next {
+    right: -40px;
+}
+
+

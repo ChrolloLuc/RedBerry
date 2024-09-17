@@ -99,7 +99,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: calc(100% / 3 - 32px); /* 3 სვეტი */
+    width: calc(100% / 3 - 32px);
 }
 
 
@@ -375,7 +375,7 @@ input[type="checkbox"]:checked + span::before {
     border-radius: 10px;
     background-color: white;
     position: absolute;
-    top: 50px; /* Adjust based on your layout */
+    top: 50px; 
     left: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

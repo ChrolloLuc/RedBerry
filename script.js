@@ -198,64 +198,7 @@ fileUpload.addEventListener('click', () => {
 
 // cards
 
-const apiUrl = 'https://api.real-estate-manager.redberryinternship.ge/api/real-estates';
-const token = '9d05fa86-f508-47f7-ae9e-56543ac5037'; 
 
-async function fetchRealEstateListings() {
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'accept': 'application/json'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const listings = await response.json();
-    console.log(listings); // Check the fetched data here
-    
-    displayRealEstateListings(listings);
-  } catch (error) {
-    console.error('Error fetching real estate listings:', error);
-  }
-}
-
-function displayRealEstateListings(listings) {
-  const listingsContainer = document.getElementById('real-estate-list');
-
-  // Clear previous content
-  listingsContainer.innerHTML = '';
-
-  listings.forEach(listing => {
-    const saleOrRent = listing.is_rental ? 'For Rent' : 'For Sale';
-
-    // Create the HTML structure for each card
-    const cardHtml = `
-      <div class="cards">
-        <img src="${listing.image}" alt="Property Image">
-        <div class="card-details">
-          <h3 class="card-price">${listing.price} ₾</h3>
-          <p><strong>Address:</strong> ${listing.address}, ${listing.city.name}</p>
-          <p><strong>City:</strong> ${listing.city.name}</p>
-          <p><strong>ZIP Code:</strong> ${listing.zip_code}</p>
-          <p><strong>Area:</strong> ${listing.area} m²</p>
-          <p><strong>Bedrooms:</strong> ${listing.bedrooms}</p>
-          <p class="card-tag">${saleOrRent}</p>
-        </div>
-      </div>
-    `;
-
-    // Append each card to the container
-    listingsContainer.innerHTML += cardHtml;
-  });
-}
-
-// Call the function to fetch and display the listings
-fetchRealEstateListings();
 
 
 
