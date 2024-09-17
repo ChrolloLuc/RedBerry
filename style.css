@@ -75,6 +75,7 @@ a {
     display: flex;
     align-items: center;
     font-size: 16px;
+    
 }
 
 .region-dropdown button .arrow {
@@ -100,6 +101,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
+    z-index: 2;
 }
 
 .dropdown-content label {
@@ -281,6 +283,7 @@ input[type="checkbox"]:checked + span::before {
 
 .bedroom-container {
     position: relative;
+    z-index: 4;
 }
 
 .bedroom-button {
@@ -315,7 +318,10 @@ input[type="checkbox"]:checked + span::before {
 .bedroom-dropdown-content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+}
+.bedroom-dropdown-content label{
+    width: 216px;
 }
 
 #bedroom-count {
@@ -335,10 +341,10 @@ input[type="checkbox"]:checked + span::before {
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    text-align: center;
     width: 77px;
     height: 33px;
-    
+    display: flex;
+    align-self: flex-end;
 }
 
 .bedroom-choose:hover {
@@ -362,6 +368,7 @@ input[type="checkbox"]:checked + span::before {
 
 .area-dropdown {
     position: relative;
+    z-index: 3;
 }
 
 .area-button {
@@ -658,7 +665,8 @@ body.modal-open {
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
-    
+    position: relative;
+    z-index: 1;
 }
 .cards:hover{
     box-shadow: 5px 5px 12px 0px hsla(208, 90%, 8%, 0.078);
@@ -711,6 +719,16 @@ body.modal-open {
     gap: 5px;
 }
 
+.tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color:  #02152680;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
 
 
 /* cards */
