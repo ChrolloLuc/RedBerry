@@ -730,5 +730,53 @@ body.modal-open {
     font-size: 12px;
   }
 
-
 /* cards */
+
+/* filter */
+.filter-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    border-radius: 5px;
+    height: 29px;
+    width: 553px;
+    top: 15px;
+    left: 162px;
+    position: relative;
+}
+
+.filter-tag {
+    display: flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 15px;
+    font-size: 14px;
+    border: 1px solid #021526CC;
+}
+
+.remove-filter {
+    cursor: pointer;
+    margin-left: 5px;
+    width: 12px;
+    height: 12px;
+}
+
+.clear-filters {
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.no-results-message {
+    font-size: 18px;
+    width: 504px;
+    height: 24px;
+    top: 72px;
+    left: 134px;
+    position: relative;
+  }
+/* filter */
+
