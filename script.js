@@ -213,11 +213,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // pricedropdown
 
-
-
-
-
-
 // bedroom dropdown
 const bedroomButton = document.getElementById('bedroom-button');
 const bedroomDropdown = document.getElementById('bedroom-dropdown');
@@ -231,12 +226,32 @@ bedroomButton.addEventListener('click', () => {
 
 //area dropdown
 
-const areaButton = document.getElementById('area-button')
-const areaDropdown = document.getElementById('area-dropdown')
+const areaButton = document.getElementById('area-button');
+const areaDropdown = document.getElementById('area-dropdown');
+const minPriceInput = document.getElementById('min-price');
+const maxPriceInput = document.getElementById('max-price');
 
-areaButton.addEventListener('click', () =>{
-    areaButton.classList.toggle('active')
-})
+// Toggle the dropdown visibility
+areaButton.addEventListener('click', () => {
+    areaButton.classList.toggle('active');
+});
+
+// Event listener for minimum area options
+const minOptions = document.querySelectorAll('.area-column-left .area-option');
+minOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+        minPriceInput.value = e.target.textContent.trim();
+    });
+});
+
+// Event listener for maximum area options
+const maxOptions = document.querySelectorAll('.area-column-right .area-option');
+maxOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+        maxPriceInput.value = e.target.textContent.trim();
+    });
+});
+
 
 //area dropdown
 
@@ -621,6 +636,8 @@ document.querySelector('.filter-display').addEventListener('click', (e) => {
 window.onload = () => {
     fetchRealEstateData();
 };
+
+// area filter
 
 
 
