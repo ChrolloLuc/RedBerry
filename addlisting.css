@@ -61,6 +61,9 @@ label {
     margin-bottom: 5px;
     font-weight: bold;
 }
+select{
+    cursor: pointer;
+}
 
 input[type="text"], input[type="number"], select, textarea {
     width: 100%;
@@ -75,7 +78,7 @@ input[type="text"], input[type="number"], select, textarea {
     gap: 20px;
 }
 
-.photo-upload {
+/* .photo-upload {
     width: 100%;
     height: 100px;
     border: 2px dashed #ddd;
@@ -90,13 +93,81 @@ input[type="text"], input[type="number"], select, textarea {
 .photo-upload span {
     font-size: 24px;
     color: #888;
+} */
+
+/* file upload */
+
+.agent-form-file-upload {
+    border: 2px dashed #E4E3EB;
+    border-radius: 12px;
+    height: 120px;
+    width: 788px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
 }
+
+.upload-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-icon {
+    font-size: 24px;
+    color: #1A1A1A;
+}
+
+.file-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-image {
+    width: 92px;
+    height: 82px;
+    object-fit: cover;
+}
+
+.remove-file {
+    position: absolute;
+    top: 90px;
+    left: 424px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.trash-icon {
+    width: 16px;
+    height: 16px;
+    
+}
+
+/* file upload */
 
 .buttons {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .btn {
@@ -126,4 +197,17 @@ input[type="text"], input[type="number"], select, textarea {
 }
 .btn-submit:hover{
     background-color: hsl(8, 95%, 45%);
+}
+
+.choose-agent-now{
+    width: 384px;
+    height: 64px;
+}
+.choose-agent-now p {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.choose-agent-now select{
+    cursor: pointer;
 }

@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <label for="region">რეგიონი</label>
                             <select id="region">
-                                <option value="">აირჩიეთ რეგიონი</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -60,19 +60,19 @@
                     <div class="form-column">
                         <div class="form-group">
                             <label for="price">ფასი</label>
-                            <input type="number" id="price">
+                            <input type="text" id="price">
                             <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
                         </div>
                         <div class="form-group">
                             <label for="bedrooms">საძინებლების რაოდენობა *</label>
-                            <input type="number" id="bedrooms" required>
+                            <input type="text" id="bedrooms" required>
                             <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
                         </div>
                     </div>
                     <div class="form-column">
                         <div class="form-group">
                             <label for="area">ფართობი</label>
-                            <input type="number" id="area">
+                            <input type="text" id="area">
                             <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
                         </div>
                     </div>
@@ -85,20 +85,42 @@
                 </div>
 
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>ატვირთეთ ფოტო *</label>
                     <div class="photo-upload">
                         <span>+</span>
                     </div>
+                </div> -->
+
+                <div class="agent-form-group agent-form-group-full">
+                    <label for="agent-photo" class="agent-form-label">ატვირთეთ ფოტო *</label>
+                    <div class="agent-form-file-upload" id="agent-photo">
+                        <div class="upload-placeholder">
+                            <span class="upload-icon">+</span>
+                        </div>
+                        <div class="file-preview">
+                            <img src="" alt="Uploaded photo" class="preview-image">
+                            <button class="remove-file">
+                                <img src="trash-icon.png" alt="Remove" class="trash-icon">
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
+
+
+            <div class="form-group">
                     <label for="agent">აგენტი</label>
+                <div class="choose-agent-now">
+                    <p>აირჩიე</p>
                     <select id="agent">
-                        <option value="">აირჩიეთ აგენტი</option>
-                        <option value="">აირჩიეთ აგენტი</option>
+                        <option value=""><button>+ დაამატე აგენტი</button></option>
                     </select>
                 </div>
+            </div>
+
+
+            
             </form>
         </div>
         <div class="buttons">
