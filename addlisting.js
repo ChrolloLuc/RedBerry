@@ -59,6 +59,7 @@ addressInput.addEventListener('input', () => {
     } else {
         addressHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         addressHint.style.color = 'red';
+        addressInput.style.border = '1px solid red'; 
     }
 });
 
@@ -74,6 +75,7 @@ postalInput.addEventListener('input', () => {
     } else {
         postalHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         postalHint.style.color = 'red';
+        postalInput.style.border = '1px solid red'; 
     }
 });
 
@@ -90,6 +92,7 @@ priceInput.addEventListener('input', () => {
     } else {
         priceHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         priceHint.style.color = 'red';
+        priceInput.style.border = '1px solid red'; 
     }
 });
 
@@ -107,6 +110,7 @@ bedroomsInput.addEventListener('input', () => {
     } else {
         bedroomsHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         bedroomsHint.style.color = 'red';
+        bedroomsInput.style.border = '1px solid red'; 
     }
 });
 
@@ -123,6 +127,7 @@ areaInput.addEventListener('input', () => {
     } else {
         areaHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         areaHint.style.color = 'red';
+        areaInput.style.border = '1px solid red'; 
     }
 });
 
@@ -142,6 +147,7 @@ descriptionInput.addEventListener('input', () => {
     } else {
         descriptionHint.innerHTML = '<img src="check-red.png" alt="Invalid" > მინიმუმ ხუთი სიტყვა';
         descriptionHint.style.color = 'red';
+        descriptionInput.style.border = '1px solid red'; 
     }
 });
 
@@ -212,8 +218,46 @@ fetchCities();
 
 //fetch agents
 
-const agentSelect = document.getElementById('agent');
+// const agentSelect = document.getElementById('agent');
 
+// async function fetchAgents() {
+//     try {
+//         const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/agents', {
+//             method: 'GET',
+//             headers: {
+//                 'Authorization': 'Bearer 9d087282-e845-40ec-9e4a-1618e8ddb056', 
+//                 'accept': 'application/json'
+//             }
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+
+//         const agents = await response.json();
+
+//         // Populate the select element with agents
+//         agents.forEach(agent => {
+//             const option = document.createElement('option');
+//             option.value = agent.id; // Set the agent's id as the value
+//             option.textContent = `${agent.name} ${agent.surname}`; // Display the name and surname
+//             agentSelect.appendChild(option);
+//         });
+//     } catch (error) {
+//         console.error('Error fetching agents:', error);
+//     }
+// }
+
+// // Call the function to fetch and populate agents on page load
+// fetchAgents();
+
+
+
+// add agent locally
+const agentSelect = document.getElementById('agent');
+const localAgentsKey = 'localAgents'; // Key for localStorage
+
+// Fetch agents from the API
 async function fetchAgents() {
     try {
         const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/agents', {
@@ -230,20 +274,128 @@ async function fetchAgents() {
 
         const agents = await response.json();
 
-        // Populate the select element with agents
-        agents.forEach(agent => {
-            const option = document.createElement('option');
-            option.value = agent.id; // Set the agent's id as the value
-            option.textContent = `${agent.name} ${agent.surname}`; // Display the name and surname
-            agentSelect.appendChild(option);
-        });
+        return agents; // Return the fetched agents
     } catch (error) {
         console.error('Error fetching agents:', error);
+        return []; // Return an empty array if there was an error
     }
 }
 
-// Call the function to fetch and populate agents on page load
-fetchAgents();
+// Get agents from local storage
+function getLocalAgents() {
+    const storedAgents = localStorage.getItem(localAgentsKey);
+    return storedAgents ? JSON.parse(storedAgents) : [];
+}
+
+// Save new agent to local storage
+function saveAgentToLocal(agent) {
+    const agents = getLocalAgents();
+    agents.push(agent);
+    localStorage.setItem(localAgentsKey, JSON.stringify(agents));
+}
+
+// Populate the agent select dropdown
+async function populateAgentDropdown() {
+    // Fetch agents from the API
+    const apiAgents = await fetchAgents();
+    // Get agents from local storage
+    const localAgents = getLocalAgents();
+
+    // Clear the current options
+    agentSelect.innerHTML = '<option value="">აირჩიე</option>';
+
+    // Add API agents to the dropdown
+    apiAgents.forEach(agent => {
+        const option = document.createElement('option');
+        option.value = agent.id;
+        option.textContent = `${agent.name} ${agent.surname}`;
+        agentSelect.appendChild(option);
+    });
+
+    // Add local agents to the dropdown
+    localAgents.forEach(agent => {
+        const option = document.createElement('option');
+        option.value = `local-${agent.id}`; // Use a unique ID for local agents
+        option.textContent = `${agent.name} ${agent.surname}`;
+        agentSelect.appendChild(option);
+    });
+}
+
+// When the modal is submitted (user adds a new agent)
+document.querySelector('.agent-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Assuming name and surname inputs
+    const nameInput = document.getElementById('agent-name').value;
+    const surnameInput = document.getElementById('agent-surname').value;
+
+    if (nameInput && surnameInput) {
+        const newAgent = {
+            id: Date.now(), // Unique ID for the local agent
+            name: nameInput,
+            surname: surnameInput
+        };
+
+        // Save the new agent to local storage
+        saveAgentToLocal(newAgent);
+
+        // Close the modal (assuming closeModal function exists)
+        closeModal();
+
+        // Update the agent dropdown
+        populateAgentDropdown();
+    }
+});
+
+// Populate agents on page load
+populateAgentDropdown();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// add agent
+
+const agentButton = document.getElementById('agent-button');
+const modal = document.getElementById('agent-modal');
+const body = document.body;
+const cancelButton = document.querySelector('.agent-form-btn-cancel');
+
+// Function to hide the modal
+function closeModal() {
+    modal.classList.add('hidden');
+    body.classList.remove('modal-open');
+    modal.classList.remove('modal-active');
+}
+
+// Show the modal when the agent button is clicked
+agentButton.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    body.classList.add('modal-open');
+    setTimeout(() => {
+        modal.classList.add('modal-active');
+    }, 10);
+});
+
+
+modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+
+cancelButton.addEventListener('click', () => {
+    closeModal();
+});

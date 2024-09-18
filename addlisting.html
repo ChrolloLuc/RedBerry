@@ -85,12 +85,7 @@
                 </div>
 
 
-                <!-- <div class="form-group">
-                    <label>ატვირთეთ ფოტო *</label>
-                    <div class="photo-upload">
-                        <span>+</span>
-                    </div>
-                </div> -->
+                
 
                 <div class="agent-form-group agent-form-group-full">
                     <label for="agent-photo" class="agent-form-label">ატვირთეთ ფოტო *</label>
@@ -114,8 +109,10 @@
                 <div class="choose-agent-now">
                     <p>აირჩიე</p>
                     <select id="agent">
-                        <option value=""><button>+ დაამატე აგენტი</button></option>
+                        <option value="">აირჩიე</option>
+                        <option value=""></option>
                     </select>
+                    <button id="agent-button">+ დაამატე აგენტი</button>
                 </div>
             </div>
 
@@ -129,6 +126,61 @@
         </div>
     </div>
     
+<!-- daamate agenti -->
+
+<div id="agent-modal" class="agent-modal hidden">
+    <div class="agent-form-container">
+        <h1 class="agent-form-title">აგენტის დამატება</h1>
+        <form class="agent-form">
+            <div class="agent-form-column">
+                <div class="agent-form-group">
+                    <label for="agent-name" class="agent-form-label">სახელი*</label>
+                    <input type="text" id="agent-name" class="agent-form-input" required>
+                    <p class="agent-form-hint"><img src="check-default.png" alt="default"> მინიმუმ ორი სიმბოლო</p>
+                </div>
+                <div class="agent-form-group">
+                    <label for="agent-email" class="agent-form-label">ელ-ფოსტა*</label>
+                    <input type="email" id="agent-email" class="agent-form-input" required>
+                    <p class="agent-form-hint"><img src="check-default.png" alt="default"> გამოიყენეთ @redberry.ge ფოსტა</p>
+                </div>
+            </div>
+            <div class="agent-form-column">
+                <div class="agent-form-group">
+                    <label for="agent-surname" class="agent-form-label">გვარი*</label>
+                    <input type="text" id="agent-surname" class="agent-form-input" required>
+                    <p class="agent-form-hint"><img src="check-default.png" alt="default"> მინიმუმ ორი სიმბოლო</p>
+                </div>
+                <div class="agent-form-group">
+                    <label for="agent-phone" class="agent-form-label">ტელეფონის ნომერი</label>
+                    <input type="tel" id="agent-phone" class="agent-form-input">
+                    <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
+                </div>
+            </div>
+            <div class="agent-form-group agent-form-group-full">
+              <label for="agent-photo" class="agent-form-label">ატვირთეთ ფოტო *</label>
+              <div class="agent-form-file-upload" id="agent-photo">
+                  <div class="upload-placeholder">
+                      <span class="upload-icon">+</span>
+                  </div>
+                  <div class="file-preview">
+                      <img src="" alt="Uploaded photo" class="preview-image">
+                      <button class="remove-file">
+                          <img src="trash-icon.png" alt="Remove" class="trash-icon">
+                      </button>
+                  </div>
+              </div>
+          </div>
+
+
+            <div class="agent-form-button-group">
+                <button type="button" class="agent-form-btn agent-form-btn-cancel">გაუქმება</button>
+                <button type="submit" class="agent-form-btn agent-form-btn-submit">დაამატე აგენტი</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- daamate agenti -->
 
 
 </body>

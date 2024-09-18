@@ -322,9 +322,12 @@ nameInput.addEventListener('input', ()=>{
     if(nameValue.length >= 2 && /^[A-Za-zა-ჰ]+$/.test(nameValue)){
       nameHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ორი სიმბოლო';
       nameHint.style.color = 'green'; 
+
     } else {
       nameHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
       nameHint.style.color = 'red'; 
+      nameInput.style.border = '1px solid red'; 
+
     }
 })
 
@@ -341,6 +344,7 @@ surnameInput.addEventListener('input', ()=>{
     } else {
       surnameHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
       surnameHint.style.color = 'red'; 
+      surnameInput.style.border = '1px solid red'; 
     }
 })
 
@@ -359,6 +363,7 @@ emailInput.addEventListener('input', () => {
     } else {
         emailHint.innerHTML = '<img src="check-red.png" alt="Invalid"> გამოიყენეთ @redberry.ge ფოსტა';
         emailHint.style.color = 'red'; 
+        emailInput.style.border = '1px solid red'; 
     }
 });
 
@@ -380,6 +385,7 @@ phoneInput.addEventListener('input', () => {
     } else {
         phoneHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
         phoneHint.style.color = 'red';
+        phoneInput.style.border = '1px solid red'; 
     }
 });
 
