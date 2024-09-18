@@ -639,12 +639,7 @@ body.modal-open {
     background-color: hsl(8, 95%, 45%);
 }
   
-
-
-
-
-
-
+/* file upload */
 .agent-form-file-upload {
     border: 2px dashed #E4E3EB;
     border-radius: 12px;
@@ -707,14 +702,6 @@ body.modal-open {
     height: 16px;
     
 }
-
-
-
-
-
-
-
-
   
 /* add agent */
 

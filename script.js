@@ -1,54 +1,3 @@
-// // fetch api
-// async function fetchRegions() {
-//     try {
-//         const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/regions');
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-//         return await response.json();
-//     } catch (error) {
-//         console.error("Could not fetch regions:", error);
-//         return []; 
-//     }
-// }
-// // fetch api
-
-// // create region dropdown
-// async function regionDropdown() {
-//     const dropdownContainer = document.getElementById('regionDropdown');
-//     const regions = await fetchRegions();
-
-//     regions.forEach(region => {
-//         const label = document.createElement('label');
-
-//         const checkbox = document.createElement('input');
-//         checkbox.type = 'checkbox';
-//         checkbox.value = region.name;
-
-//         const customCheckbox = document.createElement('span');
-
-//         label.appendChild(checkbox);
-//         label.appendChild(customCheckbox);
-//         label.appendChild(document.createTextNode(region.name));
-
-//         dropdownContainer.appendChild(label);
-//     });
-
-//     // Button container
-//     const buttonContainer = document.createElement('div');
-//     buttonContainer.classList.add('button-container');
-
-//     // Submit button
-//     const submitButton = document.createElement('button');
-//     submitButton.classList.add('submit-btn');
-//     submitButton.textContent = 'არჩევა';
-
-//     buttonContainer.appendChild(submitButton);
-//     dropdownContainer.appendChild(buttonContainer);
-// }
-
-// regionDropdown();
-
 let FiltersRegions = { regions: [] };
 
 // Fetch API
@@ -314,26 +263,6 @@ cancelButton.addEventListener('click', () => {
 });
 
 // Handle file upload
-// const fileUpload = document.getElementById('agent-photo');
-
-// fileUpload.addEventListener('click', () => {
-//     const input = document.createElement('input');
-//     input.type = 'file';
-//     input.accept = 'image/*';
-//     input.onchange = (e) => {
-//         const file = e.target.files[0];
-//         if (file) {
-//             const reader = new FileReader();
-//             reader.onload = (e) => {
-//                 fileUpload.style.backgroundImage = `url(${e.target.result})`;
-//                 fileUpload.style.backgroundSize = 'cover';
-//                 fileUpload.textContent = '';
-//             };
-//             reader.readAsDataURL(file);
-//         }
-//     };
-//     input.click();
-// });
 
 const fileUpload = document.getElementById('agent-photo');
 const fileInput = document.createElement('input');
@@ -460,168 +389,28 @@ phoneInput.addEventListener('input', () => {
 
 
 // API data simulation
-const realEstateData = [
-    {
-        "id": 902,
-        "address": "ნოკრელა სითი",
-        "zip_code": "0101",
-        "price": 154867,
-        "area": 100.5,
-        "bedrooms": 4,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/qumdIhZlm7tPokBdfCazZpclHyUsqXNYjBfGOSX3.png",
-        "is_rental": 0,
-        "city_id": 1,
-        "city": {
-          "id": 1,
-          "name": "სოხუმი",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
+
+  async function fetchRealEstateData() {
+    try {
+        const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/real-estates', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer 9d087282-e845-40ec-9e4a-1618e8ddb056', // Replace <your_token> with your actual token
+                'accept': 'application/json'
+            }
+        });
+        // Check if the response is OK (status 200)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-      },
-      {
-        "id": 903,
-        "address": "ნოკრელა სითი",
-        "zip_code": "0101",
-        "price": 154867,
-        "area": 75,
-        "bedrooms": 4,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/Sb6yiMWUuYbKaBNH11tF6f0FKVmd3uLEhzecwrc3.png",
-        "is_rental": 0,
-        "city_id": 2,
-        "city": {
-          "id": 2,
-          "name": "გაგრა",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
-        }
-      },
-      {
-        "id": 904,
-        "address": "ნოკრელა სითი",
-        "zip_code": "0101",
-        "price": 100000,
-        "area": 34,
-        "bedrooms": 1,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/KVnaQdC4qACqbkq8cnFuyf7wenTMa1nlA7TDyNH0.png",
-        "is_rental": 0,
-        "city_id": 3,
-        "city": {
-          "id": 3,
-          "name": "ოჩამჩირე",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
-        }
-      },
-      {
-        "id": 905,
-        "address": "მუხიანი",
-        "zip_code": "0101",
-        "price": 99991,
-        "area": 150,
-        "bedrooms": 6,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/px0YKsQvn8ybraucjnH1miVY6e9gb58UXMQf5xlW.png",
-        "is_rental": 0,
-        "city_id": 4,
-        "city": {
-          "id": 4,
-          "name": "გუდაუთა",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
-        }
-      },
-      {
-        "id": 906,
-        "address": "საბურთალო",
-        "zip_code": "0102",
-        "price": 87000,
-        "area": 210,
-        "bedrooms": 1,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/Eoa5toa87Bn9qlkrxmB5h4YrwYBCDhmpi8Sza4Pm.png",
-        "is_rental": 0,
-        "city_id": 5,
-        "city": {
-          "id": 5,
-          "name": "გალი",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
-        }
-      },
-      {
-        "id": 907,
-        "address": "კრწანისი",
-        "zip_code": "0103",
-        "price": 87000,
-        "area": 144,
-        "bedrooms": 10,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/2rV6T5r8FbuXRxUcsbqd1h1rKMWr0St4MofL6J1H.png",
-        "is_rental": 0,
-        "city_id": 7,
-        "city": {
-          "id": 7,
-          "name": "ახალი ათონი",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
-        }
-      },
-      {
-        "id": 908,
-        "address": "ისანი",
-        "zip_code": "0103",
-        "price": 87000,
-        "area": 14,
-        "bedrooms": 3,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/Rb19ujL8Un2qXn0Jh8hHtAgYUShY8efQjHRpjwq5.png",
-        "is_rental": 0,
-        "city_id": 1,
-        "city": {
-          "id": 1,
-          "name": "სოხუმი",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
-        }
-      },
-      {
-        "id": 909,
-        "address": "ლიმგრეივი",
-        "zip_code": "0104",
-        "price": 201000,
-        "area": 14,
-        "bedrooms": 4,
-        "image": "https://api.real-estate-manager.redberryinternship.ge/storage/images/2kzrHviGTEkMUOOKTe7xZbiYv5tYrbKAXHlEWTBp.png",
-        "is_rental": 0,
-        "city_id": 3,
-        "city": {
-          "id": 3,
-          "name": "ოჩამჩირე",
-          "region_id": 1,
-          "region": {
-            "id": 1,
-            "name": "აფხაზეთი"
-          }
-        }
-      }
-  ]
+        const realEstateData = await response.json();
+        generateRealEstateCards(realEstateData); // Generate the cards with the fetched data
+    } catch (error) {
+        console.error('Error fetching real estate data:', error);
+    }
+
+}
+
   
   // Function to generate cards dynamically
   function generateRealEstateCards(data) {
@@ -640,7 +429,7 @@ const realEstateData = [
         // Create the card HTML structure
         const cardHTML = `
           <div class="cards">
-              <span class="tag">იყიდება</span>
+              <span class="tag">${item.is_rental ? 'ქირავდება' : 'იყიდება'}</span>
             <div class="card-image">
               <img src="${item.image}" alt="${item.address}">
             </div>
@@ -663,34 +452,13 @@ const realEstateData = [
   
   // On page load, generate cards
   window.onload = () => {
-    generateRealEstateCards(realEstateData);
+    fetchRealEstateData();
   };
   
 // cards
 
 // Function to filter real estate data by bedroom count
 
-// function filterByBedroomCount(count) {
-//     const filteredData = realEstateData.filter(item => item.bedrooms === count);
-//     generateRealEstateCards(filteredData);
-//   }
-  
-//   // Event listener for the bedroom filter button
-  
-//   document.querySelector('.bedroom-choose').addEventListener('click', () => {
-//     const bedroomCount = parseInt(document.getElementById('bedroom-count').value);
-//     filterByBedroomCount(bedroomCount);
-//     document.getElementById('bedroom-dropdown').classList.remove('show');
-//   });
-  
-  
-//   // Toggle dropdown visibility
-  
-//   document.getElementById('bedroom-button').addEventListener('click', () => {
-//     document.getElementById('bedroom-dropdown').classList.toggle('show');
-//   });
-  
-  // Assume we have the real estate data in realEstateData array
 let activeFilters = {};
 
 function updateFilterDisplay() {
