@@ -314,26 +314,71 @@ cancelButton.addEventListener('click', () => {
 });
 
 // Handle file upload
-const fileUpload = document.getElementById('agent-photo');
+// const fileUpload = document.getElementById('agent-photo');
 
-fileUpload.addEventListener('click', () => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                fileUpload.style.backgroundImage = `url(${e.target.result})`;
-                fileUpload.style.backgroundSize = 'cover';
-                fileUpload.textContent = '';
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-    input.click();
+// fileUpload.addEventListener('click', () => {
+//     const input = document.createElement('input');
+//     input.type = 'file';
+//     input.accept = 'image/*';
+//     input.onchange = (e) => {
+//         const file = e.target.files[0];
+//         if (file) {
+//             const reader = new FileReader();
+//             reader.onload = (e) => {
+//                 fileUpload.style.backgroundImage = `url(${e.target.result})`;
+//                 fileUpload.style.backgroundSize = 'cover';
+//                 fileUpload.textContent = '';
+//             };
+//             reader.readAsDataURL(file);
+//         }
+//     };
+//     input.click();
+// });
+
+const fileUpload = document.getElementById('agent-photo');
+const fileInput = document.createElement('input');
+fileInput.type = 'file';
+fileInput.accept = 'image/*';
+fileInput.style.display = 'none';
+fileUpload.appendChild(fileInput);
+
+const uploadPlaceholder = fileUpload.querySelector('.upload-placeholder');
+const filePreview = fileUpload.querySelector('.file-preview');
+const previewImage = fileUpload.querySelector('.preview-image');
+const removeFileButton = fileUpload.querySelector('.remove-file');
+
+fileUpload.addEventListener('click', (e) => {
+    if (e.target !== removeFileButton && e.target !== removeFileButton.querySelector('img')) {
+        fileInput.click();
+    }
 });
+
+fileInput.addEventListener('change', handleFileSelect);
+
+removeFileButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    resetFileUpload();
+});
+
+function handleFileSelect(e) {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImage.src = e.target.result;
+            uploadPlaceholder.style.display = 'none';
+            filePreview.style.display = 'flex';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function resetFileUpload() {
+    fileInput.value = '';
+    previewImage.src = '';
+    uploadPlaceholder.style.display = 'flex';
+    filePreview.style.display = 'none';
+}
 
 
 

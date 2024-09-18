@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label>გარიგების ტიპი</label>
                     <div class="radio-group">
-                        <label><input type="radio" name="deal-type" value="sale"> იყიდება</label>
+                        <label><input type="radio" name="deal-type" value="sale" checked> იყიდება</label>
                         <label><input type="radio" name="deal-type" value="rent"> ქირავდება</label>
                     </div>
                 </div>
@@ -31,6 +31,7 @@
                         <div class="form-group">
                             <label for="address">მისამართი *</label>
                             <input type="text" id="address" required>
+                            <p class="agent-form-hint"><img src="check-default.png" alt="default"> მინიმუმ ორი სიმბოლო</p>
                         </div>
                         <div class="form-group">
                             <label for="region">რეგიონი</label>
@@ -43,6 +44,7 @@
                         <div class="form-group">
                             <label for="postal-code">საფოსტო ინდექსი *</label>
                             <input type="text" id="postal-code" required>
+                            <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
                         </div>
                         <div class="form-group">
                             <label for="city">ქალაქი</label>
@@ -59,16 +61,19 @@
                         <div class="form-group">
                             <label for="price">ფასი</label>
                             <input type="number" id="price">
+                            <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
                         </div>
                         <div class="form-group">
                             <label for="bedrooms">საძინებლების რაოდენობა *</label>
                             <input type="number" id="bedrooms" required>
+                            <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
                         </div>
                     </div>
                     <div class="form-column">
                         <div class="form-group">
                             <label for="area">ფართობი</label>
                             <input type="number" id="area">
+                            <p class="agent-form-hint"><img src="check-default.png" alt="default"> მხოლოდ რიცხვები</p>
                         </div>
                     </div>
                 </div>
@@ -76,6 +81,7 @@
                 <div class="form-group">
                     <label for="description">აღწერა *</label>
                     <textarea id="description" rows="4" required></textarea>
+                    <p class="agent-form-hint"><img src="check-default.png" alt="default"> მინიმუმ ხუთი სიტყვა</p>
                 </div>
 
 
@@ -89,6 +95,7 @@
                 <div class="form-group">
                     <label for="agent">აგენტი</label>
                     <select id="agent">
+                        <option value="">აირჩიეთ აგენტი</option>
                         <option value="">აირჩიეთ აგენტი</option>
                     </select>
                 </div>
