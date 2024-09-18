@@ -585,7 +585,7 @@ body.modal-open {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-    
+    text-align: left !important;
 }
 
 .agent-form-group input{
@@ -779,4 +779,5 @@ body.modal-open {
     position: relative;
   }
 /* filter */
+
 

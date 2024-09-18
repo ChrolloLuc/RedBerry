@@ -335,6 +335,80 @@ fileUpload.addEventListener('click', () => {
     input.click();
 });
 
+
+
+
+//სახელი
+
+const nameInput = document.getElementById('agent-name')
+const nameHint = nameInput.nextElementSibling
+
+nameInput.addEventListener('input', ()=>{
+    const nameValue = nameInput.value
+    if(nameValue.length >= 2 && /^[A-Za-zა-ჰ]+$/.test(nameValue)){
+      nameHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ორი სიმბოლო';
+      nameHint.style.color = 'green'; 
+    } else {
+      nameHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
+      nameHint.style.color = 'red'; 
+    }
+})
+
+// გვარი
+
+const surnameInput = document.getElementById('agent-surname')
+const surnameHint = surnameInput.nextElementSibling
+
+surnameInput.addEventListener('input', ()=>{
+    const surnameValue = surnameInput.value
+    if(surnameValue.length >= 2 && /^[A-Za-zა-ჰ]+$/.test(surnameValue)){
+      surnameHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ორი სიმბოლო';
+      surnameHint.style.color = 'green'; 
+    } else {
+      surnameHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
+      surnameHint.style.color = 'red'; 
+    }
+})
+
+// ელ ფოსტა
+
+const emailInput = document.getElementById('agent-email');
+const emailHint = emailInput.nextElementSibling; 
+
+emailInput.addEventListener('input', () => {
+    const emailValue = emailInput.value;
+
+    
+    if (/^[a-zA-Z0-9._%+-]+@redberry\.ge$/.test(emailValue)) {
+        emailHint.innerHTML = '<img src="check-green.png" alt="Valid"> გამოიყენეთ @redberry.ge ფოსტა';
+        emailHint.style.color = 'green'; 
+    } else {
+        emailHint.innerHTML = '<img src="check-red.png" alt="Invalid"> გამოიყენეთ @redberry.ge ფოსტა';
+        emailHint.style.color = 'red'; 
+    }
+});
+
+
+
+
+// ტელეფონის ნომერი
+
+const phoneInput = document.getElementById('agent-phone');
+const phoneHint = phoneInput.nextElementSibling; 
+
+
+phoneInput.addEventListener('input', () => {
+    const phoneValue = phoneInput.value;
+
+    if (phoneValue.length >= 2 && /^\d+$/.test(phoneValue)) { 
+        phoneHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ორი სიმბოლო';
+        phoneHint.style.color = 'green'; 
+    } else {
+        phoneHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
+        phoneHint.style.color = 'red';
+    }
+});
+
 //add agent
 
 // cards
