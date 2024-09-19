@@ -404,7 +404,7 @@ function generateRealEstateCards(data) {
     } else {
         data.forEach(item => {
             const cardHTML = `
-                <div class="cards">
+                <div class="cards" data-id="${item.id}">
                     <span class="tag">${item.is_rental ? 'ქირავდება' : 'იყიდება'}</span>
                     <div class="card-image">
                         <img src="${item.image}" alt="${item.address}">
