@@ -1,4 +1,64 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Fetch real estate data
+async function fetchRealEstateData() {
+    try {
+        const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/real-estates', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer 9d087282-e845-40ec-9e4a-1618e8ddb056', // Replace with your actual token
+                'accept': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const realEstateData = await response.json();
+        
+        // Call the function to generate real estate cards
+        generateRealEstateCards(realEstateData);
+    } catch (error) {
+        console.error('Error fetching real estate data:', error);
+    }
+}
+
+// Function to generate real estate cards dynamically for the carousel
+function generateRealEstateCards(data) {
+    const listingsTrack = document.querySelector('.listings-track');
+    listingsTrack.innerHTML = ""; // Clear previous listings
+
+    if (data.length === 0) {
+        const noResultsMessage = document.createElement('div');
+        noResultsMessage.className = 'no-results-message';
+        noResultsMessage.textContent = 'No listings available';
+        listingsTrack.appendChild(noResultsMessage);
+    } else {
+        data.forEach(item => {
+            const cardHTML = `
+                <div class="property-card" data-id="${item.id}">
+                    <div class="property-image">
+                        <img src="${item.image}" alt="${item.address}">
+                        <span class="tag">${item.is_rental ? 'ქირავდება' : 'იყიდება'}</span>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-price">${item.price} ₾</h3>
+                        <p class="property-location">${item.city.name}, ${item.address}</p>
+                        <div class="property-features">
+                            <span><i class="material-icons">bed</i> ${item.bedrooms}</span>
+                            <span><i class="material-icons">square_foot</i> ${item.area} მ²</span>
+                            <span><i class="material-icons">location_on</i> ${item.zip_code}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            listingsTrack.innerHTML += cardHTML;
+        });
+
+        // Call the function to initialize carousel logic after cards are generated
+        initializeCarousel();
+    }
+}
+
+// Function to initialize and handle carousel logic
+function initializeCarousel() {
     const track = document.querySelector('.listings-track');
     let cards = Array.from(track.querySelectorAll('.property-card'));
     const cardWidth = cards[0].offsetWidth + 20; 
@@ -8,14 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     const visibleCards = 4;
 
-    
     function appendNextSet() {
         const clones = cards.slice(0, visibleCards).map(card => card.cloneNode(true));
         clones.forEach(clone => track.appendChild(clone));
         cards = Array.from(track.querySelectorAll('.property-card')); 
     }
 
-    
     function prependPrevSet() {
         const clones = cards.slice(-visibleCards).map(card => card.cloneNode(true));
         clones.forEach(clone => track.insertBefore(clone, cards[0]));
@@ -50,9 +108,15 @@ document.addEventListener('DOMContentLoaded', () => {
     nextButton.addEventListener('click', moveNext);
     prevButton.addEventListener('click', movePrev);
 
-    // Auto-scroll
+    // Auto-scroll every 5 seconds
     setInterval(moveNext, 5000);
+}
+
+// Fetch real estate data on page load
+document.addEventListener('DOMContentLoaded', () => {
+    fetchRealEstateData(); // Fetch and generate cards
 });
+
 
 
 

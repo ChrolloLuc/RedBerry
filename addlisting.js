@@ -56,6 +56,7 @@ addressInput.addEventListener('input', () => {
     if (addressValue.length >= 2) {
         addressHint.innerHTML = '<img src="check-green.png" alt="Valid"> მინიმუმ ორი სიმბოლო';
         addressHint.style.color = 'green';
+        addressInput.style.border = '1px solid green'; 
     } else {
         addressHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         addressHint.style.color = 'red';
@@ -72,6 +73,7 @@ postalInput.addEventListener('input', () => {
     if (/^\d+$/.test(postalValue)) {
         postalHint.innerHTML = '<img src="check-green.png" alt="Valid"> მხოლოდ რიცხვები';
         postalHint.style.color = 'green';
+        postalInput.style.border = '1px solid green';
     } else {
         postalHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         postalHint.style.color = 'red';
@@ -89,6 +91,7 @@ priceInput.addEventListener('input', () => {
     if (/^\d+$/.test(priceValue)) {
         priceHint.innerHTML = '<img src="check-green.png" alt="Valid"> მხოლოდ რიცხვები';
         priceHint.style.color = 'green';
+        priceInput.style.border = '1px solid green';
     } else {
         priceHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         priceHint.style.color = 'red';
@@ -107,6 +110,7 @@ bedroomsInput.addEventListener('input', () => {
     if (/^\d+$/.test(bedroomsValue)) {
         bedroomsHint.innerHTML = '<img src="check-green.png" alt="Valid"> მხოლოდ რიცხვები';
         bedroomsHint.style.color = 'green';
+        bedroomsInput.style.border = '1px solid green';
     } else {
         bedroomsHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         bedroomsHint.style.color = 'red';
@@ -124,6 +128,7 @@ areaInput.addEventListener('input', () => {
     if (/^\d+$/.test(areaValue)) {
         areaHint.innerHTML = '<img src="check-green.png" alt="Valid"> მხოლოდ რიცხვები';
         areaHint.style.color = 'green';
+        areaInput.style.border = '1px solid green';
     } else {
         areaHint.innerHTML = '<img src="check-red.png" alt="Invalid"> ჩაწერეთ ვალიდური მონაცემები';
         areaHint.style.color = 'red';
@@ -144,6 +149,7 @@ descriptionInput.addEventListener('input', () => {
     if (wordCount >= 5) {
         descriptionHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ხუთი სიტყვა';
         descriptionHint.style.color = 'green';
+        descriptionInput.style.border = '1px solid green';
     } else {
         descriptionHint.innerHTML = '<img src="check-red.png" alt="Invalid" > მინიმუმ ხუთი სიტყვა';
         descriptionHint.style.color = 'red';
@@ -349,19 +355,6 @@ document.querySelector('.agent-form').addEventListener('submit', (e) => {
 
 // Populate agents on page load
 populateAgentDropdown();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -470,6 +470,25 @@ function applyAllFilters() {
     generateRealEstateCards(filteredData);
 }
 
+// Save filters and inputs to localStorage
+function saveFiltersToLocalStorage() {
+    localStorage.setItem('FiltersRegions', JSON.stringify(FiltersRegions));
+    localStorage.setItem('activeFilters', JSON.stringify(activeFilters));
+}
+
+// Load filters and inputs from localStorage
+function loadFiltersFromLocalStorage() {
+    const savedRegions = localStorage.getItem('FiltersRegions');
+    const savedActiveFilters = localStorage.getItem('activeFilters');
+
+    if (savedRegions) {
+        FiltersRegions = JSON.parse(savedRegions);
+    }
+    if (savedActiveFilters) {
+        activeFilters = JSON.parse(savedActiveFilters);
+    }
+}
+
 // Update the filter display with regions and other filters
 function updateFilterDisplay() {
     const filterDisplay = document.querySelector('.filter-display');
@@ -540,6 +559,8 @@ document.querySelector('.bedroom-choose').addEventListener('click', () => {
     const bedroomCount = document.getElementById('bedroom-count').value;
     applyFilter('bedrooms', bedroomCount);
     document.getElementById('bedroom-dropdown').classList.remove('show');
+
+    
 });
 
 // Event listener for area range inputs and apply button
@@ -551,6 +572,8 @@ document.querySelector('.area-choose').addEventListener('click', () => {
     const maxArea = parseInt(maxAreaInput.value) || Infinity;
     applyFilter('areaRange', { minArea, maxArea });
     document.getElementById('area-dropdown').classList.remove('active');
+
+    
 });
 
 // Event listener for price range inputs and apply button
@@ -562,6 +585,8 @@ document.querySelector('.price-btn').addEventListener('click', () => {
     const maxPrice = parseInt(maxInput.value) || Infinity;
     applyFilter('priceRange', { minPrice, maxPrice });
     document.getElementById('priceDropdown').classList.remove('show');
+
+    
 });
 
 // Event delegation for removing filters and clearing all filters
@@ -575,6 +600,7 @@ document.querySelector('.filter-display').addEventListener('click', (e) => {
 
 // On page load, fetch and display all real estate data
 window.onload = () => {
+    loadFiltersFromLocalStorage();
     fetchRealEstateData();
 };
 
