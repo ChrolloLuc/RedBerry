@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 .header {
@@ -102,6 +103,7 @@ a {
     flex-wrap: wrap;
     gap: 32px;
     z-index: 2;
+    top: 60px; 
 }
 
 .dropdown-content label {
@@ -324,6 +326,7 @@ input[type="checkbox"]:checked + span::before {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
 }
 .bedroom-dropdown-content label{
     width: 216px;

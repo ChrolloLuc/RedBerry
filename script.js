@@ -1,6 +1,6 @@
-let FiltersRegions = { regions: [] };
+// let FiltersRegions = { regions: [] };
 
-// Fetch API
+// Fetch API regions
 async function fetchRegions() {
     try {
         const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/regions');
@@ -10,7 +10,7 @@ async function fetchRegions() {
         return await response.json();
     } catch (error) {
         console.error("Could not fetch regions:", error);
-        return []; 
+        return [];
     }
 }
 
@@ -63,81 +63,11 @@ function updateRegionSelection(regionName) {
 function applyRegionFilter() {
     updateFilterDisplay();
     applyAllFilters();
-    // Close the dropdown here if needed
-    // document.getElementById('regionDropdown').style.display = 'none';
 }
 
-function applyAllFilters() {
-    let filteredData = realEstateData; // Assume realEstateData is your original data array
 
-    if (FiltersRegions.regions.length > 0) {
-        filteredData = filteredData.filter(item => FiltersRegions.regions.includes(item.city.region.name));
-    }
-
-    // Add other filter conditions here (e.g., bedrooms, price range, etc.)
-
-    generateRealEstateCards(filteredData);
-}
-
-function updateFilterDisplay() {
-    const filterDisplay = document.querySelector('.filter-display');
-    filterDisplay.innerHTML = '';
-    
-    if (FiltersRegions.regions.length > 0) {
-        const filterTag = document.createElement('div');
-        filterTag.classList.add('filter-tag');
-        filterTag.innerHTML = `
-            რეგიონები: ${FiltersRegions.regions.join(', ')}
-            <img src="x-icon.png" alt="Remove" class="remove-filter" data-filter="regions">
-        `;
-        filterDisplay.appendChild(filterTag);
-    }
-
-    // Add other filter tags here
-
-    if (FiltersRegions.regions.length > 0) {
-        const clearButton = document.createElement('button');
-        clearButton.textContent = 'გასუფთავება';
-        clearButton.classList.add('clear-filters');
-        filterDisplay.appendChild(clearButton);
-    }
-}
-
-function removeFilter(filterType) {
-    if (filterType === 'regions') {
-        FiltersRegions.regions = [];
-        document.querySelectorAll('#regionDropdown input[type="checkbox"]').forEach(checkbox => {
-            checkbox.checked = false;
-        });
-    }
-    // Handle other filter types here
-
-    updateFilterDisplay();
-    applyAllFilters();
-}
-
-function clearAllFilters() {
-    FiltersRegions.regions = [];
-    document.querySelectorAll('#regionDropdown input[type="checkbox"]').forEach(checkbox => {
-        checkbox.checked = false;
-    });
-    // Reset other filter inputs here
-
-    updateFilterDisplay();
-    generateRealEstateCards(realEstateData);
-}
-
-// Event delegation for remove filter and clear all filters
-document.querySelector('.filter-display').addEventListener('click', (e) => {
-    if (e.target.classList.contains('remove-filter')) {
-        removeFilter(e.target.dataset.filter);
-    } else if (e.target.classList.contains('clear-filters')) {
-        clearAllFilters();
-    }
-});
-
-// Call this function when the page loads
 regionDropdown();
+
 
 
 const regionButton = document.getElementById('regionButton');
@@ -160,9 +90,7 @@ regionButton.addEventListener('click', function() {
         dropdown.classList.add('active');
     }
 });
-// region dropdown
-
-
+// region 
 
 // pricedropdown
 document.addEventListener('DOMContentLoaded', function() {
@@ -222,8 +150,6 @@ bedroomButton.addEventListener('click', () => {
 });
 // bedroom dropdwon
 
-
-
 //area dropdown
 
 const areaButton = document.getElementById('area-button');
@@ -254,8 +180,6 @@ maxOptions.forEach(option => {
 
 
 //area dropdown
-
-
 
 //add agent
 
@@ -427,10 +351,27 @@ phoneInput.addEventListener('input', () => {
 
 // cards
 
-
 // API data simulation
+let FiltersRegions = { regions: [] };
+let activeFilters = {};
+let realEstateData = []; // Global variable to store the fetched data
 
-  async function fetchRealEstateData() {
+// Fetch API data for regions
+async function fetchRegions() {
+    try {
+        const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/regions');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Could not fetch regions:", error);
+        return [];
+    }
+}
+
+// Fetch real estate data
+async function fetchRealEstateData() {
     try {
         const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/real-estates', {
             method: 'GET',
@@ -439,120 +380,128 @@ phoneInput.addEventListener('input', () => {
                 'accept': 'application/json'
             }
         });
-        // Check if the response is OK (status 200)
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const realEstateData = await response.json();
-        generateRealEstateCards(realEstateData); // Generate the cards with the fetched data
-    } catch (error) {
-        console.error('Error fetching real estate data:', error);
-    }
-
-}
-
-  
-  // Function to generate cards dynamically
-  function generateRealEstateCards(data) {
-    const realEstateList = document.getElementById("real-estate-list");
-    realEstateList.innerHTML = ""; // Clear any previous content
-  
-    if (data.length === 0) {
-      // No matching results
-      const noResultsMessage = document.createElement('div');
-      noResultsMessage.className = 'no-results-message';
-      noResultsMessage.textContent = 'აღნიშნული მონაცემებით განცხადება არ იძებნება';
-      realEstateList.appendChild(noResultsMessage);
-    } else {
-      // Generate cards as before
-      data.forEach(item => {
-        // Create the card HTML structure
-        const cardHTML = `
-          <div class="cards">
-              <span class="tag">${item.is_rental ? 'ქირავდება' : 'იყიდება'}</span>
-            <div class="card-image">
-              <img src="${item.image}" alt="${item.address}">
-            </div>
-            <div class="card-content">
-              <div class="card-title">${item.price} ₾</div>
-              <div class="card-address"><img src="location.png" alt="location"> ${item.city.name}, ${item.address}</div>
-              <div class="card-details">
-                <span><img src="bed.png" alt="bed"> ${item.bedrooms}</span>
-                <span><img src="square.png" alt="square"> ${item.area} ㎡</span>
-                <span><img src="sign.png" alt="sign"> ${item.zip_code}</span>
-              </div>
-            </div>
-          </div>
-        `;
-        // Append the card to the real estate list
-        realEstateList.innerHTML += cardHTML;
-      });
-    }
-  }
-  
-  // On page load, generate cards
-  window.onload = () => {
-    fetchRealEstateData();
-  };
-  
-// cards
-
-// Function to filter real estate data by bedroom count
-
-let activeFilters = {};
-let realEstateData = []; // Global variable to store the fetched data
-
-// Fetch real estate data from the API and store it in realEstateData
-async function fetchRealEstateData() {
-    try {
-        const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/real-estates', {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer 9d087282-e845-40ec-9e4a-1618e8ddb056',
-                'accept': 'application/json'
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
         realEstateData = await response.json();
-
         applyAllFilters();
     } catch (error) {
         console.error('Error fetching real estate data:', error);
     }
 }
 
-// Update the filter display
+// Function to generate real estate cards dynamically
+function generateRealEstateCards(data) {
+    const realEstateList = document.getElementById("real-estate-list");
+    realEstateList.innerHTML = ""; // Clear any previous content
+
+    if (data.length === 0) {
+        // No matching results
+        const noResultsMessage = document.createElement('div');
+        noResultsMessage.className = 'no-results-message';
+        noResultsMessage.textContent = 'აღნიშნული მონაცემებით განცხადება არ იძებნება';
+        realEstateList.appendChild(noResultsMessage);
+    } else {
+        data.forEach(item => {
+            const cardHTML = `
+                <div class="cards">
+                    <span class="tag">${item.is_rental ? 'ქირავდება' : 'იყიდება'}</span>
+                    <div class="card-image">
+                        <img src="${item.image}" alt="${item.address}">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${item.price} ₾</div>
+                        <div class="card-address"><img src="location.png" alt="location"> ${item.city.name}, ${item.address}</div>
+                        <div class="card-details">
+                            <span><img src="bed.png" alt="bed"> ${item.bedrooms}</span>
+                            <span><img src="square.png" alt="square"> ${item.area} მ²</span>
+                            <span><img src="sign.png" alt="sign"> ${item.zip_code}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            realEstateList.innerHTML += cardHTML;
+        });
+
+        // Add event listeners to the cards to handle clicks
+        document.querySelectorAll('.cards').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const cardId = e.currentTarget.getAttribute('data-id');
+
+                // Store the card ID or other data in localStorage or sessionStorage
+                localStorage.setItem('selectedRealEstateId', cardId);
+
+                // Redirect to the new page (you can pass data via URL if you prefer)
+                window.location.href = 'listingpage.html';
+            });
+        });
+
+
+    }
+}
+
+// Apply all active filters
+function applyAllFilters() {
+    let filteredData = realEstateData;
+
+    // Apply region filter
+    if (FiltersRegions.regions.length > 0) {
+        filteredData = filteredData.filter(item => FiltersRegions.regions.includes(item.city.region.name));
+    }
+
+    // Apply bedroom filter
+    if (activeFilters.bedrooms) {
+        filteredData = filteredData.filter(item => item.bedrooms === parseInt(activeFilters.bedrooms));
+    }
+
+    // Apply price range filter
+    if (activeFilters.priceRange) {
+        const { minPrice, maxPrice } = activeFilters.priceRange;
+        filteredData = filteredData.filter(item => item.price >= minPrice && item.price <= maxPrice);
+    }
+
+    // Apply area range filter
+    if (activeFilters.areaRange) {
+        const { minArea, maxArea } = activeFilters.areaRange;
+        filteredData = filteredData.filter(item => item.area >= minArea && item.area <= maxArea);
+    }
+
+    // After applying all filters, generate filtered real estate cards
+    generateRealEstateCards(filteredData);
+}
+
+// Update the filter display with regions and other filters
 function updateFilterDisplay() {
     const filterDisplay = document.querySelector('.filter-display');
     filterDisplay.innerHTML = '';
 
-    // Loop through active filters
+    // Display region filters
+    if (FiltersRegions.regions.length > 0) {
+        const filterTag = document.createElement('div');
+        filterTag.classList.add('filter-tag');
+        filterTag.innerHTML = `
+            ${FiltersRegions.regions}
+            <img src="xphoto.png" alt="Remove" class="remove-filter" data-filter="regions">
+        `;
+        filterDisplay.appendChild(filterTag);
+    }
+
+    // Display other active filters (area, price, bedrooms)
     Object.entries(activeFilters).forEach(([key, value]) => {
         const filterTag = document.createElement('div');
         filterTag.classList.add('filter-tag');
-
-        // If it's the price range filter, display it as a single tag
         if (key === 'priceRange') {
-            filterTag.innerHTML = `
-                ${value.minPrice} ₾ - ${value.maxPrice} ₾ 
-                <img src="xphoto.png" alt="Remove" class="remove-filter" data-filter="${key}">
-            `;
+            filterTag.innerHTML = `${value.minPrice} ₾ - ${value.maxPrice} ₾ <img src="xphoto.png" alt="Remove" class="remove-filter" data-filter="${key}">`;
+        } else if (key === 'areaRange') {
+            filterTag.innerHTML = `${value.minArea} მ² - ${value.maxArea} მ² <img src="xphoto.png" alt="Remove" class="remove-filter" data-filter="${key}">`;
         } else {
-            filterTag.innerHTML = `
-                ${value} 
-                <img src="xphoto.png" alt="Remove" class="remove-filter" data-filter="${key}">
-            `;
+            filterTag.innerHTML = `${value} <img src="xphoto.png" alt="Remove" class="remove-filter" data-filter="${key}">`;
         }
-
         filterDisplay.appendChild(filterTag);
     });
 
     // Show "Clear Filters" button if there are active filters
-    if (Object.keys(activeFilters).length > 0) {
+    if (FiltersRegions.regions.length > 0 || Object.keys(activeFilters).length > 0) {
         const clearButton = document.createElement('button');
         clearButton.textContent = 'გასუფთავება';
         clearButton.classList.add('clear-filters');
@@ -560,49 +509,30 @@ function updateFilterDisplay() {
     }
 }
 
-// Apply a filter (price range or others)
-function applyFilter(filterType, filterValue) {
-    // Handle price range as a single filter
-    if (filterType === 'priceRange') {
-        activeFilters[filterType] = filterValue;
-    } else {
-        activeFilters[filterType] = filterValue;
-    }
-
-    updateFilterDisplay();
-    applyAllFilters();
-}
-
-// Apply all active filters
-function applyAllFilters() {
-    let filteredData = realEstateData;
-
-    // Filter by bedrooms
-    if (activeFilters.bedrooms) {
-        filteredData = filteredData.filter(item => item.bedrooms === parseInt(activeFilters.bedrooms));
-    }
-
-    // Filter by price range
-    if (activeFilters.priceRange) {
-        const { minPrice, maxPrice } = activeFilters.priceRange;
-        filteredData = filteredData.filter(item => item.price >= minPrice && item.price <= maxPrice);
-    }
-
-    generateRealEstateCards(filteredData);
-}
-
 // Remove a specific filter
 function removeFilter(filterType) {
-    delete activeFilters[filterType];
+    if (filterType === 'regions') {
+        FiltersRegions.regions = [];
+    } else {
+        delete activeFilters[filterType];
+    }
     updateFilterDisplay();
     applyAllFilters();
 }
 
 // Clear all filters
 function clearAllFilters() {
+    FiltersRegions.regions = [];
     activeFilters = {};
     updateFilterDisplay();
     generateRealEstateCards(realEstateData); // Reset to show all data
+}
+
+// Apply a filter (price range, area range, or others)
+function applyFilter(filterType, filterValue) {
+    activeFilters[filterType] = filterValue;
+    updateFilterDisplay();
+    applyAllFilters();
 }
 
 // Event listener for bedroom filter
@@ -612,18 +542,29 @@ document.querySelector('.bedroom-choose').addEventListener('click', () => {
     document.getElementById('bedroom-dropdown').classList.remove('show');
 });
 
+// Event listener for area range inputs and apply button
+const minAreaInput = document.getElementById('min-price');
+const maxAreaInput = document.getElementById('max-price');
+
+document.querySelector('.area-choose').addEventListener('click', () => {
+    const minArea = parseInt(minAreaInput.value) || 0;
+    const maxArea = parseInt(maxAreaInput.value) || Infinity;
+    applyFilter('areaRange', { minArea, maxArea });
+    document.getElementById('area-dropdown').classList.remove('active');
+});
+
 // Event listener for price range inputs and apply button
 const minInput = document.getElementById('minPrice');
 const maxInput = document.getElementById('maxPrice');
 
 document.querySelector('.price-btn').addEventListener('click', () => {
-    const minPrice = minInput.value || 0;
-    const maxPrice = maxInput.value || Infinity;
+    const minPrice = parseInt(minInput.value) || 0;
+    const maxPrice = parseInt(maxInput.value) || Infinity;
     applyFilter('priceRange', { minPrice, maxPrice });
     document.getElementById('priceDropdown').classList.remove('show');
 });
 
-// Event delegation for removing filters and clearing all
+// Event delegation for removing filters and clearing all filters
 document.querySelector('.filter-display').addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-filter')) {
         removeFilter(e.target.dataset.filter);
@@ -637,8 +578,7 @@ window.onload = () => {
     fetchRealEstateData();
 };
 
-// area filter
 
 
 
-  
+
