@@ -1,2 +1,0 @@
-# RedBerry
-Technical assignment
