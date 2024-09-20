@@ -1,50 +1,3 @@
-// file upload
-const fileUpload = document.getElementById('agent-photo');
-const fileInput = document.createElement('input');
-fileInput.type = 'file';
-fileInput.accept = 'image/*';
-fileInput.style.display = 'none';
-fileUpload.appendChild(fileInput);
-
-const uploadPlaceholder = fileUpload.querySelector('.upload-placeholder');
-const filePreview = fileUpload.querySelector('.file-preview');
-const previewImage = fileUpload.querySelector('.preview-image');
-const removeFileButton = fileUpload.querySelector('.remove-file');
-
-fileUpload.addEventListener('click', (e) => {
-    if (e.target !== removeFileButton && e.target !== removeFileButton.querySelector('img')) {
-        fileInput.click();
-    }
-});
-
-fileInput.addEventListener('change', handleFileSelect);
-
-removeFileButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-    resetFileUpload();
-});
-
-function handleFileSelect(e) {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            previewImage.src = e.target.result;
-            uploadPlaceholder.style.display = 'none';
-            filePreview.style.display = 'flex';
-        };
-        reader.readAsDataURL(file);
-    }
-}
-
-function resetFileUpload() {
-    fileInput.value = '';
-    previewImage.src = '';
-    uploadPlaceholder.style.display = 'flex';
-    filePreview.style.display = 'none';
-}
-
-
 // მისამართი
 
 
@@ -221,44 +174,6 @@ regionSelect.addEventListener('change', function() {
 fetchRegions(); 
 fetchCities();  
 
-
-//fetch agents
-
-// const agentSelect = document.getElementById('agent');
-
-// async function fetchAgents() {
-//     try {
-//         const response = await fetch('https://api.real-estate-manager.redberryinternship.ge/api/agents', {
-//             method: 'GET',
-//             headers: {
-//                 'Authorization': 'Bearer 9d087282-e845-40ec-9e4a-1618e8ddb056', 
-//                 'accept': 'application/json'
-//             }
-//         });
-
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-
-//         const agents = await response.json();
-
-//         // Populate the select element with agents
-//         agents.forEach(agent => {
-//             const option = document.createElement('option');
-//             option.value = agent.id; // Set the agent's id as the value
-//             option.textContent = `${agent.name} ${agent.surname}`; // Display the name and surname
-//             agentSelect.appendChild(option);
-//         });
-//     } catch (error) {
-//         console.error('Error fetching agents:', error);
-//     }
-// }
-
-// // Call the function to fetch and populate agents on page load
-// fetchAgents();
-
-
-
 // add agent locally
 const agentSelect = document.getElementById('agent');
 const localAgentsKey = 'localAgents'; // Key for localStorage
@@ -392,3 +307,179 @@ modal.addEventListener('click', (event) => {
 cancelButton.addEventListener('click', () => {
     closeModal();
 });
+
+// Handle file upload
+
+const fileUpload = document.getElementById('agent-photo');
+const fileInput = document.createElement('input');
+fileInput.type = 'file';
+fileInput.accept = 'image/*';
+fileInput.style.display = 'none';
+fileUpload.appendChild(fileInput);
+
+const uploadPlaceholder = fileUpload.querySelector('.upload-placeholder');
+const filePreview = fileUpload.querySelector('.file-preview');
+const previewImage = fileUpload.querySelector('.preview-image');
+const removeFileButton = fileUpload.querySelector('.remove-file');
+
+fileUpload.addEventListener('click', (e) => {
+    if (e.target !== removeFileButton && e.target !== removeFileButton.querySelector('img')) {
+        fileInput.click();
+    }
+});
+
+fileInput.addEventListener('change', handleFileSelect);
+
+removeFileButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    resetFileUpload();
+});
+
+function handleFileSelect(e) {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImage.src = e.target.result;
+            uploadPlaceholder.style.display = 'none';
+            filePreview.style.display = 'flex';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function resetFileUpload() {
+    fileInput.value = '';
+    previewImage.src = '';
+    uploadPlaceholder.style.display = 'flex';
+    filePreview.style.display = 'none';
+}
+
+
+
+
+//სახელი
+
+const nameInput = document.getElementById('agent-name')
+const nameHint = nameInput.nextElementSibling
+
+nameInput.addEventListener('input', ()=>{
+    const nameValue = nameInput.value
+    if(nameValue.length >= 2 && /^[A-Za-zა-ჰ]+$/.test(nameValue)){
+      nameHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ორი სიმბოლო';
+      nameHint.style.color = 'green'; 
+      nameInput.style.border = '1px solid green'; 
+
+    } else {
+      nameHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
+      nameHint.style.color = 'red'; 
+      nameInput.style.border = '1px solid red'; 
+
+    }
+})
+
+// გვარი
+
+const surnameInput = document.getElementById('agent-surname')
+const surnameHint = surnameInput.nextElementSibling
+
+surnameInput.addEventListener('input', ()=>{
+    const surnameValue = surnameInput.value
+    if(surnameValue.length >= 2 && /^[A-Za-zა-ჰ]+$/.test(surnameValue)){
+      surnameHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ორი სიმბოლო';
+      surnameHint.style.color = 'green'; 
+      surnameInput.style.border = '1px solid green'; 
+    } else {
+      surnameHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
+      surnameHint.style.color = 'red'; 
+      surnameInput.style.border = '1px solid red'; 
+    }
+})
+
+// ელ ფოსტა
+
+const emailInput = document.getElementById('agent-email');
+const emailHint = emailInput.nextElementSibling; 
+
+emailInput.addEventListener('input', () => {
+    const emailValue = emailInput.value;
+
+    
+    if (/^[a-zA-Z0-9._%+-]+@redberry\.ge$/.test(emailValue)) {
+        emailHint.innerHTML = '<img src="check-green.png" alt="Valid"> გამოიყენეთ @redberry.ge ფოსტა';
+        emailHint.style.color = 'green'; 
+        emailInput.style.border = '1px solid green'; 
+    } else {
+        emailHint.innerHTML = '<img src="check-red.png" alt="Invalid"> გამოიყენეთ @redberry.ge ფოსტა';
+        emailHint.style.color = 'red'; 
+        emailInput.style.border = '1px solid red'; 
+    }
+});
+
+
+
+
+// ტელეფონის ნომერი
+
+const phoneInput = document.getElementById('agent-phone');
+const phoneHint = phoneInput.nextElementSibling; 
+
+
+phoneInput.addEventListener('input', () => {
+    const phoneValue = phoneInput.value;
+
+    if (phoneValue.length >= 2 && /^\d+$/.test(phoneValue)) { 
+        phoneHint.innerHTML = '<img src="check-green.png" alt="Valid" > მინიმუმ ორი სიმბოლო';
+        phoneHint.style.color = 'green'; 
+        phoneInput.style.border = '1px solid green'; 
+    } else {
+        phoneHint.innerHTML = '<img src="check-red.png" alt="Invalid" > ჩაწერეთ ვალიდური მონაცემები';
+        phoneHint.style.color = 'red';
+        phoneInput.style.border = '1px solid red'; 
+    }
+});
+
+//
+
+
+// // Form submission handler
+// document.getElementById('add-listing-form').addEventListener('submit', function (e) {
+//     e.preventDefault();
+
+//     // Gather form data
+//     const address = document.getElementById('address').value.trim();
+//     const price = document.getElementById('price').value.trim();
+//     const bedrooms = document.getElementById('bedrooms').value.trim();
+//     const area = document.getElementById('area').value.trim();
+//     const description = document.getElementById('description').value.trim();
+
+//     // Validate inputs (this can be improved as needed)
+//     if (!address || !price || !bedrooms || !area || !description) {
+//         alert("All fields are required!");
+//         return;
+//     }
+
+//     // Prepare the listing data object
+//     const newListing = {
+//         id: Date.now(), // Unique ID for the listing
+//         address: address,
+//         price: price,
+//         bedrooms: bedrooms,
+//         area: area,
+//         description: description,
+//         is_rental: false, // You can change this based on your UI (e.g., checkbox or toggle for sale/rent)
+//         image: 'default-image.jpg', // Placeholder image if none is uploaded
+//     };
+
+//     // Save to localStorage
+//     let listings = JSON.parse(localStorage.getItem('realEstateData')) || [];
+//     listings.push(newListing);
+//     localStorage.setItem('realEstateData', JSON.stringify(listings));
+
+//     // Redirect to main page
+//     window.location.href = 'index.html';
+// });
+
+
+
+

@@ -1,5 +1,3 @@
-// let FiltersRegions = { regions: [] };
-
 // Fetch API regions
 async function fetchRegions() {
     try {
@@ -122,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`Selected price range: ${minPrice} - ${maxPrice} ₾`);
     });
 
-    // Adding functionality for the price options
+    
     const priceOptions = document.querySelectorAll('.price-option');
     
     priceOptions.forEach(option => {
@@ -140,6 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // pricedropdown
+
+
 
 // bedroom dropdown
 const bedroomButton = document.getElementById('bedroom-button');
@@ -180,6 +180,15 @@ maxOptions.forEach(option => {
 
 
 //area dropdown
+
+
+
+
+
+
+
+
+
 
 //add agent
 
@@ -393,6 +402,7 @@ async function fetchRealEstateData() {
 // Function to generate real estate cards dynamically
 function generateRealEstateCards(data) {
     const realEstateList = document.getElementById("real-estate-list");
+    // const listings = JSON.parse(localStorage.getItem('realEstateData')) || [];
     realEstateList.innerHTML = ""; // Clear any previous content
 
     if (data.length === 0) {
@@ -488,7 +498,7 @@ function loadFiltersFromLocalStorage() {
         activeFilters = JSON.parse(savedActiveFilters);
     }
 }
-
+ 
 // Update the filter display with regions and other filters
 function updateFilterDisplay() {
     const filterDisplay = document.querySelector('.filter-display');
@@ -547,7 +557,7 @@ function clearAllFilters() {
     generateRealEstateCards(realEstateData); // Reset to show all data
 }
 
-// Apply a filter (price range, area range, or others)
+// Apply a filter 
 function applyFilter(filterType, filterValue) {
     activeFilters[filterType] = filterValue;
     updateFilterDisplay();
@@ -605,6 +615,4 @@ window.onload = () => {
 };
 
 
-
-
-
+// localStorage.clear();

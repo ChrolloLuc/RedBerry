@@ -42,9 +42,9 @@ function generateRealEstateCards(data) {
                         <h3 class="property-price">${item.price} ₾</h3>
                         <p class="property-location">${item.city.name}, ${item.address}</p>
                         <div class="property-features">
-                            <span><i class="material-icons">bed</i> ${item.bedrooms}</span>
-                            <span><i class="material-icons">square_foot</i> ${item.area} მ²</span>
-                            <span><i class="material-icons">location_on</i> ${item.zip_code}</span>
+                            <span><img src="bed.png"> ${item.bedrooms}</span>
+                            <span><img src="square.png">${item.area} მ²</span>
+                           <span><img src="location.png">${item.zip_code}</span>
                         </div>
                     </div>
                 </div>
@@ -179,8 +179,8 @@ async function fetchRealEstateDetails(id) {
         }
 
         const realEstateDetails = await response.json();
-        console.log('Fetched RealEstate Details:', realEstateDetails); // Log data to confirm it's correct
-        displayRealEstateDetails(realEstateDetails); // Pass data to display function
+        console.log('Fetched RealEstate Details:', realEstateDetails); 
+        displayRealEstateDetails(realEstateDetails); 
     } catch (error) {
         console.error('Error fetching real estate details:', error);
     }
